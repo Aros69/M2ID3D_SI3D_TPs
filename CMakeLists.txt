@@ -44,11 +44,11 @@ target_link_libraries(RobotGL.exe
 
 add_executable(RayTraceCPU.exe
         ${GKIT_SRC_FILES}
-        src/RayTrace/mainCPU.cpp
-        src/RayTrace/Utils.cpp
-        src/RayTrace/Utils.h
-        src/RayTrace/RayTraceImageProcessing.cpp
-        src/RayTrace/RayTraceImageProcessing.h)
+        src/RayTrace/CPU/mainCPU.cpp
+        src/RayTrace/Utils/Utils.cpp
+        src/RayTrace/Utils/Utils.h
+        src/RayTrace/CPU/RayTraceImageProcessing.cpp
+        src/RayTrace/CPU/RayTraceImageProcessing.h)
 target_link_libraries(RayTraceCPU.exe
         ${SDL2_LIBRARIES}
         ${SDL2_IMG_LIBRARIES}
@@ -57,13 +57,42 @@ target_link_libraries(RayTraceCPU.exe
 
 add_executable(RayTraceGPU.exe
         ${GKIT_SRC_FILES}
-        src/RayTrace/mainGPU.cpp
-        src/RayTrace/Utils.cpp
-        src/RayTrace/Utils.h
-        src/RayTrace/RayTraceImageProcessing.cpp
-        src/RayTrace/RayTraceImageProcessing.h
-        src/RayTrace/OpenGLUtils.h)
+        src/RayTrace/GPU/mainGPU.cpp
+        src/RayTrace/Utils/Utils.cpp
+        src/RayTrace/Utils/Utils.h
+        src/RayTrace/CPU/RayTraceImageProcessing.cpp
+        src/RayTrace/CPU/RayTraceImageProcessing.h
+        src/RayTrace/Utils/OpenGLUtils.h src/RayTrace/GPU/ComputeShaderTest.cpp)
 target_link_libraries(RayTraceGPU.exe
+        ${SDL2_LIBRARIES}
+        ${SDL2_IMG_LIBRARIES}
+        ${GLEW_LIBRARIES}
+        ${OPENGL_LIBRARIES})
+
+add_executable(TestOpenGL.exe
+        ${GKIT_SRC_FILES}
+        src/TestOpenGL.cpp)
+target_link_libraries(TestOpenGL.exe
+        ${SDL2_LIBRARIES}
+        ${SDL2_IMG_LIBRARIES}
+        ${GLEW_LIBRARIES}
+        ${OPENGL_LIBRARIES})
+
+add_executable(ComputeShaderTest.exe
+        ${GKIT_SRC_FILES}
+        src/RayTrace/GPU/ComputeShaderTest.cpp)
+target_link_libraries(ComputeShaderTest.exe
+        ${SDL2_LIBRARIES}
+        ${SDL2_IMG_LIBRARIES}
+        ${GLEW_LIBRARIES}
+        ${OPENGL_LIBRARIES})
+
+add_executable(BezierSurface.exe
+        ${GKIT_SRC_FILES}
+        src/SurfaceBezier/Modelisation_TP3.cpp
+        src/SurfaceBezier/surface_bezier.h
+        src/SurfaceBezier/structNE.h)
+target_link_libraries(BezierSurface.exe
         ${SDL2_LIBRARIES}
         ${SDL2_IMG_LIBRARIES}
         ${GLEW_LIBRARIES}

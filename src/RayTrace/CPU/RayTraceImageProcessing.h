@@ -5,7 +5,7 @@
 #include "orbiter.h"
 #include "wavefront.h"
 
-#include "Utils.h"
+#include "../Utils/Utils.h"
 
 class RayTraceImageProcessing {
 private :
