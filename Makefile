@@ -111,30 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named BezierSurface.exe
+# Target rules for targets named RTgpuCompute.exe
 
 # Build rule for target.
-BezierSurface.exe: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 BezierSurface.exe
-.PHONY : BezierSurface.exe
+RTgpuCompute.exe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 RTgpuCompute.exe
+.PHONY : RTgpuCompute.exe
 
 # fast build rule for target.
-BezierSurface.exe/fast:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/build
-.PHONY : BezierSurface.exe/fast
-
-#=============================================================================
-# Target rules for targets named ComputeShaderTest.exe
-
-# Build rule for target.
-ComputeShaderTest.exe: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ComputeShaderTest.exe
-.PHONY : ComputeShaderTest.exe
-
-# fast build rule for target.
-ComputeShaderTest.exe/fast:
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/build
-.PHONY : ComputeShaderTest.exe/fast
+RTgpuCompute.exe/fast:
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/build
+.PHONY : RTgpuCompute.exe/fast
 
 #=============================================================================
 # Target rules for targets named shader_kit.exe
@@ -189,19 +176,6 @@ RayTraceCPU.exe/fast:
 .PHONY : RayTraceCPU.exe/fast
 
 #=============================================================================
-# Target rules for targets named TestOpenGL.exe
-
-# Build rule for target.
-TestOpenGL.exe: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 TestOpenGL.exe
-.PHONY : TestOpenGL.exe
-
-# fast build rule for target.
-TestOpenGL.exe/fast:
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/build
-.PHONY : TestOpenGL.exe/fast
-
-#=============================================================================
 # Target rules for targets named RayTraceGPU.exe
 
 # Build rule for target.
@@ -214,6 +188,19 @@ RayTraceGPU.exe/fast:
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/build
 .PHONY : RayTraceGPU.exe/fast
 
+#=============================================================================
+# Target rules for targets named ComputeShaderTest.exe
+
+# Build rule for target.
+ComputeShaderTest.exe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ComputeShaderTest.exe
+.PHONY : ComputeShaderTest.exe
+
+# fast build rule for target.
+ComputeShaderTest.exe/fast:
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/build
+.PHONY : ComputeShaderTest.exe/fast
+
 src/RayTrace/CPU/RayTraceImageProcessing.o: src/RayTrace/CPU/RayTraceImageProcessing.cpp.o
 
 .PHONY : src/RayTrace/CPU/RayTraceImageProcessing.o
@@ -221,7 +208,6 @@ src/RayTrace/CPU/RayTraceImageProcessing.o: src/RayTrace/CPU/RayTraceImageProces
 # target to build an object file
 src/RayTrace/CPU/RayTraceImageProcessing.cpp.o:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/RayTrace/CPU/RayTraceImageProcessing.cpp.o
-	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/RayTrace/CPU/RayTraceImageProcessing.cpp.o
 .PHONY : src/RayTrace/CPU/RayTraceImageProcessing.cpp.o
 
 src/RayTrace/CPU/RayTraceImageProcessing.i: src/RayTrace/CPU/RayTraceImageProcessing.cpp.i
@@ -231,7 +217,6 @@ src/RayTrace/CPU/RayTraceImageProcessing.i: src/RayTrace/CPU/RayTraceImageProces
 # target to preprocess a source file
 src/RayTrace/CPU/RayTraceImageProcessing.cpp.i:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/RayTrace/CPU/RayTraceImageProcessing.cpp.i
-	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/RayTrace/CPU/RayTraceImageProcessing.cpp.i
 .PHONY : src/RayTrace/CPU/RayTraceImageProcessing.cpp.i
 
 src/RayTrace/CPU/RayTraceImageProcessing.s: src/RayTrace/CPU/RayTraceImageProcessing.cpp.s
@@ -241,7 +226,6 @@ src/RayTrace/CPU/RayTraceImageProcessing.s: src/RayTrace/CPU/RayTraceImageProces
 # target to generate assembly for a file
 src/RayTrace/CPU/RayTraceImageProcessing.cpp.s:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/RayTrace/CPU/RayTraceImageProcessing.cpp.s
-	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/RayTrace/CPU/RayTraceImageProcessing.cpp.s
 .PHONY : src/RayTrace/CPU/RayTraceImageProcessing.cpp.s
 
 src/RayTrace/CPU/mainCPU.o: src/RayTrace/CPU/mainCPU.cpp.o
@@ -278,7 +262,6 @@ src/RayTrace/GPU/ComputeShaderTest.o: src/RayTrace/GPU/ComputeShaderTest.cpp.o
 # target to build an object file
 src/RayTrace/GPU/ComputeShaderTest.cpp.o:
 	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/RayTrace/GPU/ComputeShaderTest.cpp.o
-	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/RayTrace/GPU/ComputeShaderTest.cpp.o
 .PHONY : src/RayTrace/GPU/ComputeShaderTest.cpp.o
 
 src/RayTrace/GPU/ComputeShaderTest.i: src/RayTrace/GPU/ComputeShaderTest.cpp.i
@@ -288,7 +271,6 @@ src/RayTrace/GPU/ComputeShaderTest.i: src/RayTrace/GPU/ComputeShaderTest.cpp.i
 # target to preprocess a source file
 src/RayTrace/GPU/ComputeShaderTest.cpp.i:
 	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/RayTrace/GPU/ComputeShaderTest.cpp.i
-	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/RayTrace/GPU/ComputeShaderTest.cpp.i
 .PHONY : src/RayTrace/GPU/ComputeShaderTest.cpp.i
 
 src/RayTrace/GPU/ComputeShaderTest.s: src/RayTrace/GPU/ComputeShaderTest.cpp.s
@@ -298,8 +280,34 @@ src/RayTrace/GPU/ComputeShaderTest.s: src/RayTrace/GPU/ComputeShaderTest.cpp.s
 # target to generate assembly for a file
 src/RayTrace/GPU/ComputeShaderTest.cpp.s:
 	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/RayTrace/GPU/ComputeShaderTest.cpp.s
-	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/RayTrace/GPU/ComputeShaderTest.cpp.s
 .PHONY : src/RayTrace/GPU/ComputeShaderTest.cpp.s
+
+src/RayTrace/GPU/RTgpuCompute.o: src/RayTrace/GPU/RTgpuCompute.cpp.o
+
+.PHONY : src/RayTrace/GPU/RTgpuCompute.o
+
+# target to build an object file
+src/RayTrace/GPU/RTgpuCompute.cpp.o:
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/RayTrace/GPU/RTgpuCompute.cpp.o
+.PHONY : src/RayTrace/GPU/RTgpuCompute.cpp.o
+
+src/RayTrace/GPU/RTgpuCompute.i: src/RayTrace/GPU/RTgpuCompute.cpp.i
+
+.PHONY : src/RayTrace/GPU/RTgpuCompute.i
+
+# target to preprocess a source file
+src/RayTrace/GPU/RTgpuCompute.cpp.i:
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/RayTrace/GPU/RTgpuCompute.cpp.i
+.PHONY : src/RayTrace/GPU/RTgpuCompute.cpp.i
+
+src/RayTrace/GPU/RTgpuCompute.s: src/RayTrace/GPU/RTgpuCompute.cpp.s
+
+.PHONY : src/RayTrace/GPU/RTgpuCompute.s
+
+# target to generate assembly for a file
+src/RayTrace/GPU/RTgpuCompute.cpp.s:
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/RayTrace/GPU/RTgpuCompute.cpp.s
+.PHONY : src/RayTrace/GPU/RTgpuCompute.cpp.s
 
 src/RayTrace/GPU/mainGPU.o: src/RayTrace/GPU/mainGPU.cpp.o
 
@@ -385,74 +393,19 @@ src/RobotGL/robotGL.cpp.s:
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/RobotGL/robotGL.cpp.s
 .PHONY : src/RobotGL/robotGL.cpp.s
 
-src/SurfaceBezier/Modelisation_TP3.o: src/SurfaceBezier/Modelisation_TP3.cpp.o
-
-.PHONY : src/SurfaceBezier/Modelisation_TP3.o
-
-# target to build an object file
-src/SurfaceBezier/Modelisation_TP3.cpp.o:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/SurfaceBezier/Modelisation_TP3.cpp.o
-.PHONY : src/SurfaceBezier/Modelisation_TP3.cpp.o
-
-src/SurfaceBezier/Modelisation_TP3.i: src/SurfaceBezier/Modelisation_TP3.cpp.i
-
-.PHONY : src/SurfaceBezier/Modelisation_TP3.i
-
-# target to preprocess a source file
-src/SurfaceBezier/Modelisation_TP3.cpp.i:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/SurfaceBezier/Modelisation_TP3.cpp.i
-.PHONY : src/SurfaceBezier/Modelisation_TP3.cpp.i
-
-src/SurfaceBezier/Modelisation_TP3.s: src/SurfaceBezier/Modelisation_TP3.cpp.s
-
-.PHONY : src/SurfaceBezier/Modelisation_TP3.s
-
-# target to generate assembly for a file
-src/SurfaceBezier/Modelisation_TP3.cpp.s:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/SurfaceBezier/Modelisation_TP3.cpp.s
-.PHONY : src/SurfaceBezier/Modelisation_TP3.cpp.s
-
-src/TestOpenGL.o: src/TestOpenGL.cpp.o
-
-.PHONY : src/TestOpenGL.o
-
-# target to build an object file
-src/TestOpenGL.cpp.o:
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/TestOpenGL.cpp.o
-.PHONY : src/TestOpenGL.cpp.o
-
-src/TestOpenGL.i: src/TestOpenGL.cpp.i
-
-.PHONY : src/TestOpenGL.i
-
-# target to preprocess a source file
-src/TestOpenGL.cpp.i:
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/TestOpenGL.cpp.i
-.PHONY : src/TestOpenGL.cpp.i
-
-src/TestOpenGL.s: src/TestOpenGL.cpp.s
-
-.PHONY : src/TestOpenGL.s
-
-# target to generate assembly for a file
-src/TestOpenGL.cpp.s:
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/TestOpenGL.cpp.s
-.PHONY : src/TestOpenGL.cpp.s
-
 src/gKit/app.o: src/gKit/app.cpp.o
 
 .PHONY : src/gKit/app.o
 
 # target to build an object file
 src/gKit/app.cpp.o:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/app.cpp.o
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/app.cpp.o
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/app.cpp.o
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/app.cpp.o
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/app.cpp.o
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/app.cpp.o
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/app.cpp.o
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/app.cpp.o
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/app.cpp.o
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/app.cpp.o
 .PHONY : src/gKit/app.cpp.o
 
 src/gKit/app.i: src/gKit/app.cpp.i
@@ -461,14 +414,13 @@ src/gKit/app.i: src/gKit/app.cpp.i
 
 # target to preprocess a source file
 src/gKit/app.cpp.i:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/app.cpp.i
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/app.cpp.i
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/app.cpp.i
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/app.cpp.i
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/app.cpp.i
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/app.cpp.i
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/app.cpp.i
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/app.cpp.i
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/app.cpp.i
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/app.cpp.i
 .PHONY : src/gKit/app.cpp.i
 
 src/gKit/app.s: src/gKit/app.cpp.s
@@ -477,14 +429,13 @@ src/gKit/app.s: src/gKit/app.cpp.s
 
 # target to generate assembly for a file
 src/gKit/app.cpp.s:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/app.cpp.s
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/app.cpp.s
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/app.cpp.s
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/app.cpp.s
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/app.cpp.s
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/app.cpp.s
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/app.cpp.s
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/app.cpp.s
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/app.cpp.s
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/app.cpp.s
 .PHONY : src/gKit/app.cpp.s
 
 src/gKit/app_camera.o: src/gKit/app_camera.cpp.o
@@ -493,14 +444,13 @@ src/gKit/app_camera.o: src/gKit/app_camera.cpp.o
 
 # target to build an object file
 src/gKit/app_camera.cpp.o:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/app_camera.cpp.o
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/app_camera.cpp.o
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/app_camera.cpp.o
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/app_camera.cpp.o
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/app_camera.cpp.o
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/app_camera.cpp.o
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/app_camera.cpp.o
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/app_camera.cpp.o
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/app_camera.cpp.o
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/app_camera.cpp.o
 .PHONY : src/gKit/app_camera.cpp.o
 
 src/gKit/app_camera.i: src/gKit/app_camera.cpp.i
@@ -509,14 +459,13 @@ src/gKit/app_camera.i: src/gKit/app_camera.cpp.i
 
 # target to preprocess a source file
 src/gKit/app_camera.cpp.i:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/app_camera.cpp.i
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/app_camera.cpp.i
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/app_camera.cpp.i
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/app_camera.cpp.i
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/app_camera.cpp.i
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/app_camera.cpp.i
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/app_camera.cpp.i
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/app_camera.cpp.i
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/app_camera.cpp.i
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/app_camera.cpp.i
 .PHONY : src/gKit/app_camera.cpp.i
 
 src/gKit/app_camera.s: src/gKit/app_camera.cpp.s
@@ -525,14 +474,13 @@ src/gKit/app_camera.s: src/gKit/app_camera.cpp.s
 
 # target to generate assembly for a file
 src/gKit/app_camera.cpp.s:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/app_camera.cpp.s
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/app_camera.cpp.s
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/app_camera.cpp.s
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/app_camera.cpp.s
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/app_camera.cpp.s
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/app_camera.cpp.s
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/app_camera.cpp.s
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/app_camera.cpp.s
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/app_camera.cpp.s
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/app_camera.cpp.s
 .PHONY : src/gKit/app_camera.cpp.s
 
 src/gKit/app_time.o: src/gKit/app_time.cpp.o
@@ -541,14 +489,13 @@ src/gKit/app_time.o: src/gKit/app_time.cpp.o
 
 # target to build an object file
 src/gKit/app_time.cpp.o:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/app_time.cpp.o
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/app_time.cpp.o
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/app_time.cpp.o
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/app_time.cpp.o
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/app_time.cpp.o
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/app_time.cpp.o
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/app_time.cpp.o
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/app_time.cpp.o
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/app_time.cpp.o
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/app_time.cpp.o
 .PHONY : src/gKit/app_time.cpp.o
 
 src/gKit/app_time.i: src/gKit/app_time.cpp.i
@@ -557,14 +504,13 @@ src/gKit/app_time.i: src/gKit/app_time.cpp.i
 
 # target to preprocess a source file
 src/gKit/app_time.cpp.i:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/app_time.cpp.i
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/app_time.cpp.i
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/app_time.cpp.i
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/app_time.cpp.i
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/app_time.cpp.i
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/app_time.cpp.i
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/app_time.cpp.i
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/app_time.cpp.i
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/app_time.cpp.i
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/app_time.cpp.i
 .PHONY : src/gKit/app_time.cpp.i
 
 src/gKit/app_time.s: src/gKit/app_time.cpp.s
@@ -573,14 +519,13 @@ src/gKit/app_time.s: src/gKit/app_time.cpp.s
 
 # target to generate assembly for a file
 src/gKit/app_time.cpp.s:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/app_time.cpp.s
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/app_time.cpp.s
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/app_time.cpp.s
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/app_time.cpp.s
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/app_time.cpp.s
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/app_time.cpp.s
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/app_time.cpp.s
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/app_time.cpp.s
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/app_time.cpp.s
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/app_time.cpp.s
 .PHONY : src/gKit/app_time.cpp.s
 
 src/gKit/color.o: src/gKit/color.cpp.o
@@ -589,14 +534,13 @@ src/gKit/color.o: src/gKit/color.cpp.o
 
 # target to build an object file
 src/gKit/color.cpp.o:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/color.cpp.o
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/color.cpp.o
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/color.cpp.o
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/color.cpp.o
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/color.cpp.o
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/color.cpp.o
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/color.cpp.o
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/color.cpp.o
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/color.cpp.o
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/color.cpp.o
 .PHONY : src/gKit/color.cpp.o
 
 src/gKit/color.i: src/gKit/color.cpp.i
@@ -605,14 +549,13 @@ src/gKit/color.i: src/gKit/color.cpp.i
 
 # target to preprocess a source file
 src/gKit/color.cpp.i:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/color.cpp.i
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/color.cpp.i
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/color.cpp.i
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/color.cpp.i
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/color.cpp.i
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/color.cpp.i
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/color.cpp.i
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/color.cpp.i
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/color.cpp.i
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/color.cpp.i
 .PHONY : src/gKit/color.cpp.i
 
 src/gKit/color.s: src/gKit/color.cpp.s
@@ -621,14 +564,13 @@ src/gKit/color.s: src/gKit/color.cpp.s
 
 # target to generate assembly for a file
 src/gKit/color.cpp.s:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/color.cpp.s
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/color.cpp.s
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/color.cpp.s
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/color.cpp.s
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/color.cpp.s
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/color.cpp.s
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/color.cpp.s
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/color.cpp.s
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/color.cpp.s
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/color.cpp.s
 .PHONY : src/gKit/color.cpp.s
 
 src/gKit/draw.o: src/gKit/draw.cpp.o
@@ -637,14 +579,13 @@ src/gKit/draw.o: src/gKit/draw.cpp.o
 
 # target to build an object file
 src/gKit/draw.cpp.o:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/draw.cpp.o
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/draw.cpp.o
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/draw.cpp.o
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/draw.cpp.o
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/draw.cpp.o
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/draw.cpp.o
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/draw.cpp.o
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/draw.cpp.o
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/draw.cpp.o
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/draw.cpp.o
 .PHONY : src/gKit/draw.cpp.o
 
 src/gKit/draw.i: src/gKit/draw.cpp.i
@@ -653,14 +594,13 @@ src/gKit/draw.i: src/gKit/draw.cpp.i
 
 # target to preprocess a source file
 src/gKit/draw.cpp.i:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/draw.cpp.i
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/draw.cpp.i
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/draw.cpp.i
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/draw.cpp.i
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/draw.cpp.i
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/draw.cpp.i
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/draw.cpp.i
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/draw.cpp.i
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/draw.cpp.i
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/draw.cpp.i
 .PHONY : src/gKit/draw.cpp.i
 
 src/gKit/draw.s: src/gKit/draw.cpp.s
@@ -669,14 +609,13 @@ src/gKit/draw.s: src/gKit/draw.cpp.s
 
 # target to generate assembly for a file
 src/gKit/draw.cpp.s:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/draw.cpp.s
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/draw.cpp.s
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/draw.cpp.s
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/draw.cpp.s
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/draw.cpp.s
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/draw.cpp.s
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/draw.cpp.s
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/draw.cpp.s
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/draw.cpp.s
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/draw.cpp.s
 .PHONY : src/gKit/draw.cpp.s
 
 src/gKit/gamepads.o: src/gKit/gamepads.cpp.o
@@ -685,14 +624,13 @@ src/gKit/gamepads.o: src/gKit/gamepads.cpp.o
 
 # target to build an object file
 src/gKit/gamepads.cpp.o:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/gamepads.cpp.o
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/gamepads.cpp.o
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/gamepads.cpp.o
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/gamepads.cpp.o
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/gamepads.cpp.o
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/gamepads.cpp.o
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/gamepads.cpp.o
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/gamepads.cpp.o
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/gamepads.cpp.o
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/gamepads.cpp.o
 .PHONY : src/gKit/gamepads.cpp.o
 
 src/gKit/gamepads.i: src/gKit/gamepads.cpp.i
@@ -701,14 +639,13 @@ src/gKit/gamepads.i: src/gKit/gamepads.cpp.i
 
 # target to preprocess a source file
 src/gKit/gamepads.cpp.i:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/gamepads.cpp.i
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/gamepads.cpp.i
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/gamepads.cpp.i
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/gamepads.cpp.i
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/gamepads.cpp.i
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/gamepads.cpp.i
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/gamepads.cpp.i
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/gamepads.cpp.i
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/gamepads.cpp.i
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/gamepads.cpp.i
 .PHONY : src/gKit/gamepads.cpp.i
 
 src/gKit/gamepads.s: src/gKit/gamepads.cpp.s
@@ -717,14 +654,13 @@ src/gKit/gamepads.s: src/gKit/gamepads.cpp.s
 
 # target to generate assembly for a file
 src/gKit/gamepads.cpp.s:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/gamepads.cpp.s
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/gamepads.cpp.s
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/gamepads.cpp.s
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/gamepads.cpp.s
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/gamepads.cpp.s
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/gamepads.cpp.s
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/gamepads.cpp.s
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/gamepads.cpp.s
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/gamepads.cpp.s
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/gamepads.cpp.s
 .PHONY : src/gKit/gamepads.cpp.s
 
 src/gKit/image.o: src/gKit/image.cpp.o
@@ -733,14 +669,13 @@ src/gKit/image.o: src/gKit/image.cpp.o
 
 # target to build an object file
 src/gKit/image.cpp.o:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/image.cpp.o
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/image.cpp.o
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/image.cpp.o
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/image.cpp.o
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/image.cpp.o
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/image.cpp.o
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/image.cpp.o
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/image.cpp.o
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/image.cpp.o
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/image.cpp.o
 .PHONY : src/gKit/image.cpp.o
 
 src/gKit/image.i: src/gKit/image.cpp.i
@@ -749,14 +684,13 @@ src/gKit/image.i: src/gKit/image.cpp.i
 
 # target to preprocess a source file
 src/gKit/image.cpp.i:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/image.cpp.i
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/image.cpp.i
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/image.cpp.i
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/image.cpp.i
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/image.cpp.i
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/image.cpp.i
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/image.cpp.i
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/image.cpp.i
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/image.cpp.i
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/image.cpp.i
 .PHONY : src/gKit/image.cpp.i
 
 src/gKit/image.s: src/gKit/image.cpp.s
@@ -765,14 +699,13 @@ src/gKit/image.s: src/gKit/image.cpp.s
 
 # target to generate assembly for a file
 src/gKit/image.cpp.s:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/image.cpp.s
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/image.cpp.s
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/image.cpp.s
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/image.cpp.s
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/image.cpp.s
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/image.cpp.s
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/image.cpp.s
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/image.cpp.s
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/image.cpp.s
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/image.cpp.s
 .PHONY : src/gKit/image.cpp.s
 
 src/gKit/image_hdr.o: src/gKit/image_hdr.cpp.o
@@ -781,14 +714,13 @@ src/gKit/image_hdr.o: src/gKit/image_hdr.cpp.o
 
 # target to build an object file
 src/gKit/image_hdr.cpp.o:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/image_hdr.cpp.o
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/image_hdr.cpp.o
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/image_hdr.cpp.o
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/image_hdr.cpp.o
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/image_hdr.cpp.o
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/image_hdr.cpp.o
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/image_hdr.cpp.o
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/image_hdr.cpp.o
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/image_hdr.cpp.o
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/image_hdr.cpp.o
 .PHONY : src/gKit/image_hdr.cpp.o
 
 src/gKit/image_hdr.i: src/gKit/image_hdr.cpp.i
@@ -797,14 +729,13 @@ src/gKit/image_hdr.i: src/gKit/image_hdr.cpp.i
 
 # target to preprocess a source file
 src/gKit/image_hdr.cpp.i:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/image_hdr.cpp.i
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/image_hdr.cpp.i
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/image_hdr.cpp.i
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/image_hdr.cpp.i
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/image_hdr.cpp.i
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/image_hdr.cpp.i
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/image_hdr.cpp.i
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/image_hdr.cpp.i
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/image_hdr.cpp.i
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/image_hdr.cpp.i
 .PHONY : src/gKit/image_hdr.cpp.i
 
 src/gKit/image_hdr.s: src/gKit/image_hdr.cpp.s
@@ -813,14 +744,13 @@ src/gKit/image_hdr.s: src/gKit/image_hdr.cpp.s
 
 # target to generate assembly for a file
 src/gKit/image_hdr.cpp.s:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/image_hdr.cpp.s
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/image_hdr.cpp.s
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/image_hdr.cpp.s
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/image_hdr.cpp.s
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/image_hdr.cpp.s
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/image_hdr.cpp.s
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/image_hdr.cpp.s
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/image_hdr.cpp.s
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/image_hdr.cpp.s
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/image_hdr.cpp.s
 .PHONY : src/gKit/image_hdr.cpp.s
 
 src/gKit/image_io.o: src/gKit/image_io.cpp.o
@@ -829,14 +759,13 @@ src/gKit/image_io.o: src/gKit/image_io.cpp.o
 
 # target to build an object file
 src/gKit/image_io.cpp.o:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/image_io.cpp.o
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/image_io.cpp.o
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/image_io.cpp.o
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/image_io.cpp.o
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/image_io.cpp.o
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/image_io.cpp.o
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/image_io.cpp.o
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/image_io.cpp.o
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/image_io.cpp.o
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/image_io.cpp.o
 .PHONY : src/gKit/image_io.cpp.o
 
 src/gKit/image_io.i: src/gKit/image_io.cpp.i
@@ -845,14 +774,13 @@ src/gKit/image_io.i: src/gKit/image_io.cpp.i
 
 # target to preprocess a source file
 src/gKit/image_io.cpp.i:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/image_io.cpp.i
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/image_io.cpp.i
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/image_io.cpp.i
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/image_io.cpp.i
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/image_io.cpp.i
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/image_io.cpp.i
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/image_io.cpp.i
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/image_io.cpp.i
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/image_io.cpp.i
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/image_io.cpp.i
 .PHONY : src/gKit/image_io.cpp.i
 
 src/gKit/image_io.s: src/gKit/image_io.cpp.s
@@ -861,14 +789,13 @@ src/gKit/image_io.s: src/gKit/image_io.cpp.s
 
 # target to generate assembly for a file
 src/gKit/image_io.cpp.s:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/image_io.cpp.s
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/image_io.cpp.s
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/image_io.cpp.s
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/image_io.cpp.s
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/image_io.cpp.s
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/image_io.cpp.s
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/image_io.cpp.s
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/image_io.cpp.s
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/image_io.cpp.s
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/image_io.cpp.s
 .PHONY : src/gKit/image_io.cpp.s
 
 src/gKit/mat.o: src/gKit/mat.cpp.o
@@ -877,14 +804,13 @@ src/gKit/mat.o: src/gKit/mat.cpp.o
 
 # target to build an object file
 src/gKit/mat.cpp.o:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/mat.cpp.o
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/mat.cpp.o
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/mat.cpp.o
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/mat.cpp.o
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/mat.cpp.o
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/mat.cpp.o
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/mat.cpp.o
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/mat.cpp.o
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/mat.cpp.o
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/mat.cpp.o
 .PHONY : src/gKit/mat.cpp.o
 
 src/gKit/mat.i: src/gKit/mat.cpp.i
@@ -893,14 +819,13 @@ src/gKit/mat.i: src/gKit/mat.cpp.i
 
 # target to preprocess a source file
 src/gKit/mat.cpp.i:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/mat.cpp.i
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/mat.cpp.i
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/mat.cpp.i
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/mat.cpp.i
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/mat.cpp.i
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/mat.cpp.i
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/mat.cpp.i
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/mat.cpp.i
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/mat.cpp.i
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/mat.cpp.i
 .PHONY : src/gKit/mat.cpp.i
 
 src/gKit/mat.s: src/gKit/mat.cpp.s
@@ -909,14 +834,13 @@ src/gKit/mat.s: src/gKit/mat.cpp.s
 
 # target to generate assembly for a file
 src/gKit/mat.cpp.s:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/mat.cpp.s
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/mat.cpp.s
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/mat.cpp.s
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/mat.cpp.s
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/mat.cpp.s
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/mat.cpp.s
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/mat.cpp.s
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/mat.cpp.s
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/mat.cpp.s
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/mat.cpp.s
 .PHONY : src/gKit/mat.cpp.s
 
 src/gKit/mesh.o: src/gKit/mesh.cpp.o
@@ -925,14 +849,13 @@ src/gKit/mesh.o: src/gKit/mesh.cpp.o
 
 # target to build an object file
 src/gKit/mesh.cpp.o:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/mesh.cpp.o
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/mesh.cpp.o
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/mesh.cpp.o
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/mesh.cpp.o
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/mesh.cpp.o
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/mesh.cpp.o
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/mesh.cpp.o
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/mesh.cpp.o
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/mesh.cpp.o
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/mesh.cpp.o
 .PHONY : src/gKit/mesh.cpp.o
 
 src/gKit/mesh.i: src/gKit/mesh.cpp.i
@@ -941,14 +864,13 @@ src/gKit/mesh.i: src/gKit/mesh.cpp.i
 
 # target to preprocess a source file
 src/gKit/mesh.cpp.i:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/mesh.cpp.i
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/mesh.cpp.i
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/mesh.cpp.i
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/mesh.cpp.i
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/mesh.cpp.i
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/mesh.cpp.i
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/mesh.cpp.i
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/mesh.cpp.i
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/mesh.cpp.i
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/mesh.cpp.i
 .PHONY : src/gKit/mesh.cpp.i
 
 src/gKit/mesh.s: src/gKit/mesh.cpp.s
@@ -957,14 +879,13 @@ src/gKit/mesh.s: src/gKit/mesh.cpp.s
 
 # target to generate assembly for a file
 src/gKit/mesh.cpp.s:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/mesh.cpp.s
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/mesh.cpp.s
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/mesh.cpp.s
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/mesh.cpp.s
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/mesh.cpp.s
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/mesh.cpp.s
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/mesh.cpp.s
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/mesh.cpp.s
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/mesh.cpp.s
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/mesh.cpp.s
 .PHONY : src/gKit/mesh.cpp.s
 
 src/gKit/orbiter.o: src/gKit/orbiter.cpp.o
@@ -973,14 +894,13 @@ src/gKit/orbiter.o: src/gKit/orbiter.cpp.o
 
 # target to build an object file
 src/gKit/orbiter.cpp.o:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/orbiter.cpp.o
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/orbiter.cpp.o
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/orbiter.cpp.o
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/orbiter.cpp.o
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/orbiter.cpp.o
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/orbiter.cpp.o
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/orbiter.cpp.o
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/orbiter.cpp.o
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/orbiter.cpp.o
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/orbiter.cpp.o
 .PHONY : src/gKit/orbiter.cpp.o
 
 src/gKit/orbiter.i: src/gKit/orbiter.cpp.i
@@ -989,14 +909,13 @@ src/gKit/orbiter.i: src/gKit/orbiter.cpp.i
 
 # target to preprocess a source file
 src/gKit/orbiter.cpp.i:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/orbiter.cpp.i
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/orbiter.cpp.i
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/orbiter.cpp.i
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/orbiter.cpp.i
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/orbiter.cpp.i
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/orbiter.cpp.i
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/orbiter.cpp.i
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/orbiter.cpp.i
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/orbiter.cpp.i
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/orbiter.cpp.i
 .PHONY : src/gKit/orbiter.cpp.i
 
 src/gKit/orbiter.s: src/gKit/orbiter.cpp.s
@@ -1005,14 +924,13 @@ src/gKit/orbiter.s: src/gKit/orbiter.cpp.s
 
 # target to generate assembly for a file
 src/gKit/orbiter.cpp.s:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/orbiter.cpp.s
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/orbiter.cpp.s
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/orbiter.cpp.s
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/orbiter.cpp.s
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/orbiter.cpp.s
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/orbiter.cpp.s
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/orbiter.cpp.s
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/orbiter.cpp.s
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/orbiter.cpp.s
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/orbiter.cpp.s
 .PHONY : src/gKit/orbiter.cpp.s
 
 src/gKit/program.o: src/gKit/program.cpp.o
@@ -1021,14 +939,13 @@ src/gKit/program.o: src/gKit/program.cpp.o
 
 # target to build an object file
 src/gKit/program.cpp.o:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/program.cpp.o
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/program.cpp.o
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/program.cpp.o
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/program.cpp.o
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/program.cpp.o
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/program.cpp.o
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/program.cpp.o
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/program.cpp.o
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/program.cpp.o
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/program.cpp.o
 .PHONY : src/gKit/program.cpp.o
 
 src/gKit/program.i: src/gKit/program.cpp.i
@@ -1037,14 +954,13 @@ src/gKit/program.i: src/gKit/program.cpp.i
 
 # target to preprocess a source file
 src/gKit/program.cpp.i:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/program.cpp.i
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/program.cpp.i
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/program.cpp.i
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/program.cpp.i
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/program.cpp.i
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/program.cpp.i
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/program.cpp.i
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/program.cpp.i
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/program.cpp.i
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/program.cpp.i
 .PHONY : src/gKit/program.cpp.i
 
 src/gKit/program.s: src/gKit/program.cpp.s
@@ -1053,14 +969,13 @@ src/gKit/program.s: src/gKit/program.cpp.s
 
 # target to generate assembly for a file
 src/gKit/program.cpp.s:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/program.cpp.s
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/program.cpp.s
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/program.cpp.s
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/program.cpp.s
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/program.cpp.s
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/program.cpp.s
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/program.cpp.s
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/program.cpp.s
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/program.cpp.s
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/program.cpp.s
 .PHONY : src/gKit/program.cpp.s
 
 src/gKit/rgbe.o: src/gKit/rgbe.cpp.o
@@ -1069,14 +984,13 @@ src/gKit/rgbe.o: src/gKit/rgbe.cpp.o
 
 # target to build an object file
 src/gKit/rgbe.cpp.o:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/rgbe.cpp.o
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/rgbe.cpp.o
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/rgbe.cpp.o
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/rgbe.cpp.o
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/rgbe.cpp.o
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/rgbe.cpp.o
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/rgbe.cpp.o
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/rgbe.cpp.o
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/rgbe.cpp.o
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/rgbe.cpp.o
 .PHONY : src/gKit/rgbe.cpp.o
 
 src/gKit/rgbe.i: src/gKit/rgbe.cpp.i
@@ -1085,14 +999,13 @@ src/gKit/rgbe.i: src/gKit/rgbe.cpp.i
 
 # target to preprocess a source file
 src/gKit/rgbe.cpp.i:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/rgbe.cpp.i
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/rgbe.cpp.i
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/rgbe.cpp.i
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/rgbe.cpp.i
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/rgbe.cpp.i
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/rgbe.cpp.i
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/rgbe.cpp.i
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/rgbe.cpp.i
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/rgbe.cpp.i
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/rgbe.cpp.i
 .PHONY : src/gKit/rgbe.cpp.i
 
 src/gKit/rgbe.s: src/gKit/rgbe.cpp.s
@@ -1101,14 +1014,13 @@ src/gKit/rgbe.s: src/gKit/rgbe.cpp.s
 
 # target to generate assembly for a file
 src/gKit/rgbe.cpp.s:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/rgbe.cpp.s
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/rgbe.cpp.s
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/rgbe.cpp.s
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/rgbe.cpp.s
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/rgbe.cpp.s
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/rgbe.cpp.s
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/rgbe.cpp.s
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/rgbe.cpp.s
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/rgbe.cpp.s
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/rgbe.cpp.s
 .PHONY : src/gKit/rgbe.cpp.s
 
 src/gKit/text.o: src/gKit/text.cpp.o
@@ -1117,14 +1029,13 @@ src/gKit/text.o: src/gKit/text.cpp.o
 
 # target to build an object file
 src/gKit/text.cpp.o:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/text.cpp.o
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/text.cpp.o
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/text.cpp.o
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/text.cpp.o
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/text.cpp.o
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/text.cpp.o
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/text.cpp.o
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/text.cpp.o
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/text.cpp.o
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/text.cpp.o
 .PHONY : src/gKit/text.cpp.o
 
 src/gKit/text.i: src/gKit/text.cpp.i
@@ -1133,14 +1044,13 @@ src/gKit/text.i: src/gKit/text.cpp.i
 
 # target to preprocess a source file
 src/gKit/text.cpp.i:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/text.cpp.i
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/text.cpp.i
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/text.cpp.i
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/text.cpp.i
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/text.cpp.i
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/text.cpp.i
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/text.cpp.i
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/text.cpp.i
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/text.cpp.i
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/text.cpp.i
 .PHONY : src/gKit/text.cpp.i
 
 src/gKit/text.s: src/gKit/text.cpp.s
@@ -1149,14 +1059,13 @@ src/gKit/text.s: src/gKit/text.cpp.s
 
 # target to generate assembly for a file
 src/gKit/text.cpp.s:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/text.cpp.s
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/text.cpp.s
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/text.cpp.s
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/text.cpp.s
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/text.cpp.s
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/text.cpp.s
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/text.cpp.s
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/text.cpp.s
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/text.cpp.s
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/text.cpp.s
 .PHONY : src/gKit/text.cpp.s
 
 src/gKit/texture.o: src/gKit/texture.cpp.o
@@ -1165,14 +1074,13 @@ src/gKit/texture.o: src/gKit/texture.cpp.o
 
 # target to build an object file
 src/gKit/texture.cpp.o:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/texture.cpp.o
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/texture.cpp.o
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/texture.cpp.o
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/texture.cpp.o
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/texture.cpp.o
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/texture.cpp.o
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/texture.cpp.o
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/texture.cpp.o
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/texture.cpp.o
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/texture.cpp.o
 .PHONY : src/gKit/texture.cpp.o
 
 src/gKit/texture.i: src/gKit/texture.cpp.i
@@ -1181,14 +1089,13 @@ src/gKit/texture.i: src/gKit/texture.cpp.i
 
 # target to preprocess a source file
 src/gKit/texture.cpp.i:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/texture.cpp.i
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/texture.cpp.i
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/texture.cpp.i
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/texture.cpp.i
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/texture.cpp.i
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/texture.cpp.i
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/texture.cpp.i
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/texture.cpp.i
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/texture.cpp.i
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/texture.cpp.i
 .PHONY : src/gKit/texture.cpp.i
 
 src/gKit/texture.s: src/gKit/texture.cpp.s
@@ -1197,14 +1104,13 @@ src/gKit/texture.s: src/gKit/texture.cpp.s
 
 # target to generate assembly for a file
 src/gKit/texture.cpp.s:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/texture.cpp.s
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/texture.cpp.s
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/texture.cpp.s
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/texture.cpp.s
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/texture.cpp.s
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/texture.cpp.s
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/texture.cpp.s
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/texture.cpp.s
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/texture.cpp.s
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/texture.cpp.s
 .PHONY : src/gKit/texture.cpp.s
 
 src/gKit/uniforms.o: src/gKit/uniforms.cpp.o
@@ -1213,14 +1119,13 @@ src/gKit/uniforms.o: src/gKit/uniforms.cpp.o
 
 # target to build an object file
 src/gKit/uniforms.cpp.o:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/uniforms.cpp.o
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/uniforms.cpp.o
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/uniforms.cpp.o
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/uniforms.cpp.o
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/uniforms.cpp.o
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/uniforms.cpp.o
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/uniforms.cpp.o
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/uniforms.cpp.o
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/uniforms.cpp.o
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/uniforms.cpp.o
 .PHONY : src/gKit/uniforms.cpp.o
 
 src/gKit/uniforms.i: src/gKit/uniforms.cpp.i
@@ -1229,14 +1134,13 @@ src/gKit/uniforms.i: src/gKit/uniforms.cpp.i
 
 # target to preprocess a source file
 src/gKit/uniforms.cpp.i:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/uniforms.cpp.i
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/uniforms.cpp.i
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/uniforms.cpp.i
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/uniforms.cpp.i
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/uniforms.cpp.i
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/uniforms.cpp.i
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/uniforms.cpp.i
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/uniforms.cpp.i
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/uniforms.cpp.i
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/uniforms.cpp.i
 .PHONY : src/gKit/uniforms.cpp.i
 
 src/gKit/uniforms.s: src/gKit/uniforms.cpp.s
@@ -1245,14 +1149,13 @@ src/gKit/uniforms.s: src/gKit/uniforms.cpp.s
 
 # target to generate assembly for a file
 src/gKit/uniforms.cpp.s:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/uniforms.cpp.s
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/uniforms.cpp.s
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/uniforms.cpp.s
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/uniforms.cpp.s
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/uniforms.cpp.s
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/uniforms.cpp.s
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/uniforms.cpp.s
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/uniforms.cpp.s
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/uniforms.cpp.s
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/uniforms.cpp.s
 .PHONY : src/gKit/uniforms.cpp.s
 
 src/gKit/vec.o: src/gKit/vec.cpp.o
@@ -1261,14 +1164,13 @@ src/gKit/vec.o: src/gKit/vec.cpp.o
 
 # target to build an object file
 src/gKit/vec.cpp.o:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/vec.cpp.o
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/vec.cpp.o
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/vec.cpp.o
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/vec.cpp.o
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/vec.cpp.o
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/vec.cpp.o
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/vec.cpp.o
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/vec.cpp.o
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/vec.cpp.o
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/vec.cpp.o
 .PHONY : src/gKit/vec.cpp.o
 
 src/gKit/vec.i: src/gKit/vec.cpp.i
@@ -1277,14 +1179,13 @@ src/gKit/vec.i: src/gKit/vec.cpp.i
 
 # target to preprocess a source file
 src/gKit/vec.cpp.i:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/vec.cpp.i
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/vec.cpp.i
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/vec.cpp.i
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/vec.cpp.i
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/vec.cpp.i
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/vec.cpp.i
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/vec.cpp.i
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/vec.cpp.i
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/vec.cpp.i
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/vec.cpp.i
 .PHONY : src/gKit/vec.cpp.i
 
 src/gKit/vec.s: src/gKit/vec.cpp.s
@@ -1293,14 +1194,13 @@ src/gKit/vec.s: src/gKit/vec.cpp.s
 
 # target to generate assembly for a file
 src/gKit/vec.cpp.s:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/vec.cpp.s
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/vec.cpp.s
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/vec.cpp.s
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/vec.cpp.s
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/vec.cpp.s
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/vec.cpp.s
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/vec.cpp.s
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/vec.cpp.s
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/vec.cpp.s
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/vec.cpp.s
 .PHONY : src/gKit/vec.cpp.s
 
 src/gKit/wavefront.o: src/gKit/wavefront.cpp.o
@@ -1309,14 +1209,13 @@ src/gKit/wavefront.o: src/gKit/wavefront.cpp.o
 
 # target to build an object file
 src/gKit/wavefront.cpp.o:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/wavefront.cpp.o
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/wavefront.cpp.o
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/wavefront.cpp.o
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/wavefront.cpp.o
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/wavefront.cpp.o
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/wavefront.cpp.o
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/wavefront.cpp.o
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/wavefront.cpp.o
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/wavefront.cpp.o
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/wavefront.cpp.o
 .PHONY : src/gKit/wavefront.cpp.o
 
 src/gKit/wavefront.i: src/gKit/wavefront.cpp.i
@@ -1325,14 +1224,13 @@ src/gKit/wavefront.i: src/gKit/wavefront.cpp.i
 
 # target to preprocess a source file
 src/gKit/wavefront.cpp.i:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/wavefront.cpp.i
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/wavefront.cpp.i
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/wavefront.cpp.i
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/wavefront.cpp.i
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/wavefront.cpp.i
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/wavefront.cpp.i
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/wavefront.cpp.i
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/wavefront.cpp.i
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/wavefront.cpp.i
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/wavefront.cpp.i
 .PHONY : src/gKit/wavefront.cpp.i
 
 src/gKit/wavefront.s: src/gKit/wavefront.cpp.s
@@ -1341,14 +1239,13 @@ src/gKit/wavefront.s: src/gKit/wavefront.cpp.s
 
 # target to generate assembly for a file
 src/gKit/wavefront.cpp.s:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/wavefront.cpp.s
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/wavefront.cpp.s
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/wavefront.cpp.s
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/wavefront.cpp.s
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/wavefront.cpp.s
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/wavefront.cpp.s
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/wavefront.cpp.s
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/wavefront.cpp.s
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/wavefront.cpp.s
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/wavefront.cpp.s
 .PHONY : src/gKit/wavefront.cpp.s
 
 src/gKit/widgets.o: src/gKit/widgets.cpp.o
@@ -1357,14 +1254,13 @@ src/gKit/widgets.o: src/gKit/widgets.cpp.o
 
 # target to build an object file
 src/gKit/widgets.cpp.o:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/widgets.cpp.o
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/widgets.cpp.o
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/widgets.cpp.o
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/widgets.cpp.o
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/widgets.cpp.o
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/widgets.cpp.o
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/widgets.cpp.o
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/widgets.cpp.o
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/widgets.cpp.o
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/widgets.cpp.o
 .PHONY : src/gKit/widgets.cpp.o
 
 src/gKit/widgets.i: src/gKit/widgets.cpp.i
@@ -1373,14 +1269,13 @@ src/gKit/widgets.i: src/gKit/widgets.cpp.i
 
 # target to preprocess a source file
 src/gKit/widgets.cpp.i:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/widgets.cpp.i
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/widgets.cpp.i
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/widgets.cpp.i
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/widgets.cpp.i
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/widgets.cpp.i
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/widgets.cpp.i
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/widgets.cpp.i
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/widgets.cpp.i
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/widgets.cpp.i
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/widgets.cpp.i
 .PHONY : src/gKit/widgets.cpp.i
 
 src/gKit/widgets.s: src/gKit/widgets.cpp.s
@@ -1389,14 +1284,13 @@ src/gKit/widgets.s: src/gKit/widgets.cpp.s
 
 # target to generate assembly for a file
 src/gKit/widgets.cpp.s:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/widgets.cpp.s
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/widgets.cpp.s
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/widgets.cpp.s
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/widgets.cpp.s
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/widgets.cpp.s
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/widgets.cpp.s
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/widgets.cpp.s
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/widgets.cpp.s
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/widgets.cpp.s
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/widgets.cpp.s
 .PHONY : src/gKit/widgets.cpp.s
 
 src/gKit/window.o: src/gKit/window.cpp.o
@@ -1405,14 +1299,13 @@ src/gKit/window.o: src/gKit/window.cpp.o
 
 # target to build an object file
 src/gKit/window.cpp.o:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/window.cpp.o
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/window.cpp.o
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/window.cpp.o
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/window.cpp.o
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/window.cpp.o
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/window.cpp.o
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/window.cpp.o
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/window.cpp.o
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/window.cpp.o
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/window.cpp.o
 .PHONY : src/gKit/window.cpp.o
 
 src/gKit/window.i: src/gKit/window.cpp.i
@@ -1421,14 +1314,13 @@ src/gKit/window.i: src/gKit/window.cpp.i
 
 # target to preprocess a source file
 src/gKit/window.cpp.i:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/window.cpp.i
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/window.cpp.i
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/window.cpp.i
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/window.cpp.i
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/window.cpp.i
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/window.cpp.i
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/window.cpp.i
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/window.cpp.i
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/window.cpp.i
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/window.cpp.i
 .PHONY : src/gKit/window.cpp.i
 
 src/gKit/window.s: src/gKit/window.cpp.s
@@ -1437,14 +1329,13 @@ src/gKit/window.s: src/gKit/window.cpp.s
 
 # target to generate assembly for a file
 src/gKit/window.cpp.s:
-	$(MAKE) -f CMakeFiles/BezierSurface.exe.dir/build.make CMakeFiles/BezierSurface.exe.dir/src/gKit/window.cpp.s
-	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/window.cpp.s
+	$(MAKE) -f CMakeFiles/RTgpuCompute.exe.dir/build.make CMakeFiles/RTgpuCompute.exe.dir/src/gKit/window.cpp.s
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/window.cpp.s
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/window.cpp.s
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/window.cpp.s
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/window.cpp.s
-	$(MAKE) -f CMakeFiles/TestOpenGL.exe.dir/build.make CMakeFiles/TestOpenGL.exe.dir/src/gKit/window.cpp.s
 	$(MAKE) -f CMakeFiles/RayTraceGPU.exe.dir/build.make CMakeFiles/RayTraceGPU.exe.dir/src/gKit/window.cpp.s
+	$(MAKE) -f CMakeFiles/ComputeShaderTest.exe.dir/build.make CMakeFiles/ComputeShaderTest.exe.dir/src/gKit/window.cpp.s
 .PHONY : src/gKit/window.cpp.s
 
 src/image_viewer.o: src/image_viewer.cpp.o
@@ -1509,14 +1400,13 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... BezierSurface.exe"
-	@echo "... ComputeShaderTest.exe"
+	@echo "... RTgpuCompute.exe"
 	@echo "... shader_kit.exe"
 	@echo "... imageViewer.exe"
 	@echo "... RobotGL.exe"
 	@echo "... RayTraceCPU.exe"
-	@echo "... TestOpenGL.exe"
 	@echo "... RayTraceGPU.exe"
+	@echo "... ComputeShaderTest.exe"
 	@echo "... src/RayTrace/CPU/RayTraceImageProcessing.o"
 	@echo "... src/RayTrace/CPU/RayTraceImageProcessing.i"
 	@echo "... src/RayTrace/CPU/RayTraceImageProcessing.s"
@@ -1526,6 +1416,9 @@ help:
 	@echo "... src/RayTrace/GPU/ComputeShaderTest.o"
 	@echo "... src/RayTrace/GPU/ComputeShaderTest.i"
 	@echo "... src/RayTrace/GPU/ComputeShaderTest.s"
+	@echo "... src/RayTrace/GPU/RTgpuCompute.o"
+	@echo "... src/RayTrace/GPU/RTgpuCompute.i"
+	@echo "... src/RayTrace/GPU/RTgpuCompute.s"
 	@echo "... src/RayTrace/GPU/mainGPU.o"
 	@echo "... src/RayTrace/GPU/mainGPU.i"
 	@echo "... src/RayTrace/GPU/mainGPU.s"
@@ -1535,12 +1428,6 @@ help:
 	@echo "... src/RobotGL/robotGL.o"
 	@echo "... src/RobotGL/robotGL.i"
 	@echo "... src/RobotGL/robotGL.s"
-	@echo "... src/SurfaceBezier/Modelisation_TP3.o"
-	@echo "... src/SurfaceBezier/Modelisation_TP3.i"
-	@echo "... src/SurfaceBezier/Modelisation_TP3.s"
-	@echo "... src/TestOpenGL.o"
-	@echo "... src/TestOpenGL.i"
-	@echo "... src/TestOpenGL.s"
 	@echo "... src/gKit/app.o"
 	@echo "... src/gKit/app.i"
 	@echo "... src/gKit/app.s"

@@ -13,19 +13,6 @@
 
 #include "../Utils/OpenGLUtils.h"
 
-void printComputeShadersInfo() {
-  GLint threads_max = 0;
-  glGetIntegerv(GL_MAX_COMPUTE_WORK_GROUP_INVOCATIONS, &threads_max);
-  printf("Threads Max = %d\n", threads_max);
-
-  // Les computes shaders s'ordonnance en 3D (utile en fonction du type de calcul : Images, Grilles...)
-  GLint groups_max[3] = {};
-  glGetIntegeri_v(GL_MAX_COMPUTE_WORK_GROUP_COUNT, 0, &groups_max[0]);
-  glGetIntegeri_v(GL_MAX_COMPUTE_WORK_GROUP_COUNT, 1, &groups_max[1]);
-  glGetIntegeri_v(GL_MAX_COMPUTE_WORK_GROUP_COUNT, 2, &groups_max[2]);
-  printf("Groupe Max : %d, %d, %d\n", groups_max[0], groups_max[1], groups_max[2]);
-}
-
 // Objectif : trouver le minimum d'un
 // Creer une texture avec la première ligne = tout les chiffres en entrer
 // Les colonnes représentent les étapes des computes (donc 2 fois moins de lignes que de colonnes)
@@ -34,7 +21,23 @@ struct computeShaderTest : public AppTime {
   computeShaderTest() : AppTime(1024, 640, 4, 3) {
     nbEntier = 10;
     entiers = new int[nbEntier];
-    for (int i = 0; i < 10; ++i) { entiers[i] = i; }
+    textureData = new unsigned int[nbEntier * nbEntier];
+    for (unsigned int i = 0; i < nbEntier; ++i) {
+      for (unsigned int j = 0; j < nbEntier; j++) {
+        textureData[nbEntier * i + j] = 0;
+      }
+      entiers[i] = i;
+      textureData[i] = i;
+    }
+    /*
+    std::cout<<"Value before compute\n";
+    for (int i = 0; i < nbEntier; ++i) {
+      for (int j = 0; j < nbEntier; ++j) {
+        printf("%d ", textureData[i*nbEntier+j]);
+      }
+      std::cout<<std::endl;
+    }*/
+
   }
 
   int init() {
@@ -51,6 +54,17 @@ struct computeShaderTest : public AppTime {
     glGenTextures(1, &texture);
     // Definition du type de texture (ici texture 2D)
     glBindTexture(GL_TEXTURE_2D, texture);
+    // Creation du lien entre la texture dans la shader et dans la memoire du GPU
+    textureBinding = 0; // la valeur du binding (dans le shader)
+    glBindImageTexture(
+        textureBinding, // id binding
+        texture,        // id texture
+        0,              // niveau de la mipmap de la texture
+        GL_TRUE,        // false = texture decouper en plusiers couche
+        0,              // quelle(s) couche(s) on bind
+        GL_READ_WRITE,  // access (lecture, ecriture ou les deux
+        GL_R32UI        // format des elements de la texture
+    );
     glTexImage2D(
         GL_TEXTURE_2D, // Texture type
         0, // Niveau de la mipmap que l'on cree
@@ -60,42 +74,24 @@ struct computeShaderTest : public AppTime {
         0, // Doit etre 0
         GL_RED_INTEGER, // Format de donnee dans les pixels
         GL_UNSIGNED_INT, // Type de donnee dans les pixels
-        nullptr // Donnee a mettre dans la texture
+        textureData // Donnee a mettre dans la texture
     );
     // On supprime les autres niveaux de la mipmap
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL, 0);
-
-    // Old (bad ?) version of texture initialisation, create image not texture
-    /*textureBinding = 0; // la valeur du binding (dans le shader)
-    glBindImageTexture(
-        textureBinding, // id binding
-        texture,        // id texture
-        0,              // niveau de la mipmap de la texture
-        GL_TRUE,        // false = texture decouper en plusiers couche
-        0,              // quelle(s) couche(s) on bind
-        GL_READ_WRITE,  // access (lecture, ecriture ou les deux
-        GL_R16UI        // format des elements de la texture
-        );*/
 
     // Recuperation de l'uniform de la texture
     textureLocation = glGetUniformLocation(m_program, "imageMin");
     glUniform1i(textureLocation, textureBinding);
 
-    // Si les résultats sont écrits dans une (storage) texture et que le cpu
-    // va relire ces données avec glGetTexImage(),
-    // il faut utiliser glMemoryBarrier(GL_TEXTURE_UPDATE_BARRIER_BIT),
-
-    // TODO Trouver comment initialiser le valeurs d'une texture
-
-
     // Préparation a l'execution du shader
     GLint threads[3] = {};
     // Récupération du nombre de groupe dans le shader
     glGetProgramiv(m_program, GL_COMPUTE_WORK_GROUP_SIZE, threads);
-    printf("Taille des groupes :(%d, %d, %d)\n.", threads[0], threads[1], threads[2]);
+    printf("Taille des groupes :(%d, %d, %d).\n", threads[0], threads[1], threads[2]);
     fflush(stdout);
 
-    int N = nbEntier;
+    // N : nombre de threads a faire
+    int N = nbEntier/2;
     int groups = N / threads[0];
     if (N % threads[0] > 0) {
       // Un groupe supplémentaire, si N n'est pas un multiple de threads[0]
@@ -104,21 +100,35 @@ struct computeShaderTest : public AppTime {
     }
     // Execution du compute shader
     glDispatchCompute(groups, 1, 1);
+    // On attends la fin de l'execution des threads du compute shader
+    glMemoryBarrier(GL_TEXTURE_UPDATE_BARRIER_BIT);
 
+    glGetTexImage(
+        GL_TEXTURE_2D, // Texture type
+        0, // Niveau de la mipmap que l'on cree
+        GL_RED_INTEGER, // Format de donnee dans les pixels
+        GL_UNSIGNED_INT, // Type de donnee dans les pixels
+        textureData // place where to but data
+    );
 
-    // TODO Comment and understand this function
-    /*glGetTexImage(
-        target,
-        level,
-        format,
-        type,
-        pixels
-        );*/
+    std::cout<<"Value of texture after compute\n";
+    for (unsigned int i = 0; i < nbEntier; ++i) {
+      for (unsigned int j = 0; j < nbEntier; ++j) {
+        printf("%d ", textureData[i*nbEntier+j]);
+      }
+      std::cout<<std::endl;
+    }
+
 
     return 0;
   }
 
   int quit() {
+    // TODO free the two pointers and
+    delete []entiers;
+    entiers = nullptr;
+    delete []textureData;
+    textureData = nullptr;
     return 0;
   }
 
@@ -147,6 +157,7 @@ protected:
   unsigned int nbEntier;
   // Le tableau d'entier que l'on va tester
   int *entiers;
+  unsigned int *textureData;
   // L'identifiant du compute shader
   GLuint m_program;
   // L'identifiant de la texture
@@ -155,8 +166,6 @@ protected:
   GLuint textureBinding;
   //
   GLuint textureLocation;
-
-  GLuint m_vao;
 };
 
 

@@ -51,5 +51,23 @@ namespace glsl
   typedef gvec4<int> bvec4;
 }
 
+void printComputeShadersInfo() {
+  GLint threads_max = 0;
+  glGetIntegerv(GL_MAX_COMPUTE_WORK_GROUP_INVOCATIONS, &threads_max);
+  printf("Threads Max = %d\n", threads_max);
+
+  // Les computes shaders s'ordonnance en 3D (utile en fonction du type de calcul : Images, Grilles...)
+  GLint groups_max[3] = {};
+  glGetIntegeri_v(GL_MAX_COMPUTE_WORK_GROUP_COUNT, 0, &groups_max[0]);
+  glGetIntegeri_v(GL_MAX_COMPUTE_WORK_GROUP_COUNT, 1, &groups_max[1]);
+  glGetIntegeri_v(GL_MAX_COMPUTE_WORK_GROUP_COUNT, 2, &groups_max[2]);
+  printf("Groupe Max : %d, %d, %d\n", groups_max[0], groups_max[1], groups_max[2]);
+}
+
+struct triangle {
+  glsl::vec3 a;
+  glsl::vec3 ab;
+  glsl::vec3 ac;
+};
 
 #endif //SI3D_TP_OPENGLUTILS_H

@@ -60,9 +60,7 @@ add_executable(RayTraceGPU.exe
         src/RayTrace/GPU/mainGPU.cpp
         src/RayTrace/Utils/Utils.cpp
         src/RayTrace/Utils/Utils.h
-        src/RayTrace/CPU/RayTraceImageProcessing.cpp
-        src/RayTrace/CPU/RayTraceImageProcessing.h
-        src/RayTrace/Utils/OpenGLUtils.h src/RayTrace/GPU/ComputeShaderTest.cpp)
+        src/RayTrace/Utils/OpenGLUtils.h)
 target_link_libraries(RayTraceGPU.exe
         ${SDL2_LIBRARIES}
         ${SDL2_IMG_LIBRARIES}
@@ -87,12 +85,19 @@ target_link_libraries(ComputeShaderTest.exe
         ${GLEW_LIBRARIES}
         ${OPENGL_LIBRARIES})
 
-add_executable(BezierSurface.exe
+add_executable(heigthMapViewer.exe
         ${GKIT_SRC_FILES}
-        src/SurfaceBezier/Modelisation_TP3.cpp
-        src/SurfaceBezier/surface_bezier.h
-        src/SurfaceBezier/structNE.h)
-target_link_libraries(BezierSurface.exe
+        src/heigthMapViewer.cpp)
+target_link_libraries(heigthMapViewer.exe
+        ${SDL2_LIBRARIES}
+        ${SDL2_IMG_LIBRARIES}
+        ${GLEW_LIBRARIES}
+        ${OPENGL_LIBRARIES})
+
+add_executable(RTgpuCompute.exe
+        ${GKIT_SRC_FILES}
+        src/RayTrace/GPU/RTgpuCompute.cpp)
+target_link_libraries(RTgpuCompute.exe
         ${SDL2_LIBRARIES}
         ${SDL2_IMG_LIBRARIES}
         ${GLEW_LIBRARIES}

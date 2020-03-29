@@ -150,8 +150,8 @@ void RayTraceImageProcessing::rayTraceExercice5() {
 
 
         // accumuler la couleur de l'echantillon
-        //float cos_theta = std::max(0.f, dot(pn, normalize(-ray.d)));
-        //color = color + 1.f / float(M_PI) * material.diffuse * cos_theta;
+        float cos_theta = std::max(0.f, dot(pn, normalize(-ray.d)));
+        color = color + 1.f / float(M_PI) * material.diffuse * cos_theta;
       }
 
       image(px, py) = Color(color, 1);
