@@ -27,113 +27,45 @@
 					<DistClean command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
+			<Target title="RayTraceCPU.exe">
+				<Option output="/home/robin/Master/SI3D/gkit2light/bin/RayTraceCPU.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="bin"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/robin/Master/SI3D/gkit2light/src/gKit"/>
+					<Add directory="/usr/include/SDL2"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 RayTraceCPU.exe"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="RayTraceCPU.exe/fast">
+				<Option output="/home/robin/Master/SI3D/gkit2light/bin/RayTraceCPU.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="bin"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/robin/Master/SI3D/gkit2light/src/gKit"/>
+					<Add directory="/usr/include/SDL2"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 RayTraceCPU.exe/fast"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
 			<Target title="edit_cache">
 				<Option working_dir="/home/robin/Master/SI3D/gkit2light"/>
 				<Option type="4"/>
 				<MakeCommands>
 					<Build command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="RTgpuCompute.exe">
-				<Option output="/home/robin/Master/SI3D/gkit2light/bin/RTgpuCompute.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="bin"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/home/robin/Master/SI3D/gkit2light/src/gKit"/>
-					<Add directory="/usr/include/SDL2"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 RTgpuCompute.exe"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="RTgpuCompute.exe/fast">
-				<Option output="/home/robin/Master/SI3D/gkit2light/bin/RTgpuCompute.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="bin"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/home/robin/Master/SI3D/gkit2light/src/gKit"/>
-					<Add directory="/usr/include/SDL2"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 RTgpuCompute.exe/fast"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="shader_kit.exe">
-				<Option output="/home/robin/Master/SI3D/gkit2light/bin/shader_kit.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="bin"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/home/robin/Master/SI3D/gkit2light/src/gKit"/>
-					<Add directory="/usr/include/SDL2"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 shader_kit.exe"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="shader_kit.exe/fast">
-				<Option output="/home/robin/Master/SI3D/gkit2light/bin/shader_kit.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="bin"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/home/robin/Master/SI3D/gkit2light/src/gKit"/>
-					<Add directory="/usr/include/SDL2"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 shader_kit.exe/fast"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="imageViewer.exe">
-				<Option output="/home/robin/Master/SI3D/gkit2light/bin/imageViewer.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="bin"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/home/robin/Master/SI3D/gkit2light/src/gKit"/>
-					<Add directory="/usr/include/SDL2"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 imageViewer.exe"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="imageViewer.exe/fast">
-				<Option output="/home/robin/Master/SI3D/gkit2light/bin/imageViewer.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="bin"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/home/robin/Master/SI3D/gkit2light/src/gKit"/>
-					<Add directory="/usr/include/SDL2"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 imageViewer.exe/fast"/>
 					<CompileFile command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 clean"/>
@@ -173,8 +105,8 @@
 					<DistClean command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="RayTraceCPU.exe">
-				<Option output="/home/robin/Master/SI3D/gkit2light/bin/RayTraceCPU.exe" prefix_auto="0" extension_auto="0"/>
+			<Target title="imageViewer.exe">
+				<Option output="/home/robin/Master/SI3D/gkit2light/bin/imageViewer.exe" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="bin"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -184,14 +116,14 @@
 					<Add directory="/usr/include/SDL2"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 RayTraceCPU.exe"/>
+					<Build command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 imageViewer.exe"/>
 					<CompileFile command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="RayTraceCPU.exe/fast">
-				<Option output="/home/robin/Master/SI3D/gkit2light/bin/RayTraceCPU.exe" prefix_auto="0" extension_auto="0"/>
+			<Target title="imageViewer.exe/fast">
+				<Option output="/home/robin/Master/SI3D/gkit2light/bin/imageViewer.exe" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="bin"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -201,14 +133,14 @@
 					<Add directory="/usr/include/SDL2"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 RayTraceCPU.exe/fast"/>
+					<Build command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 imageViewer.exe/fast"/>
 					<CompileFile command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="RayTraceGPU.exe">
-				<Option output="/home/robin/Master/SI3D/gkit2light/bin/RayTraceGPU.exe" prefix_auto="0" extension_auto="0"/>
+			<Target title="shader_kit.exe">
+				<Option output="/home/robin/Master/SI3D/gkit2light/bin/shader_kit.exe" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="bin"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -218,14 +150,14 @@
 					<Add directory="/usr/include/SDL2"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 RayTraceGPU.exe"/>
+					<Build command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 shader_kit.exe"/>
 					<CompileFile command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="RayTraceGPU.exe/fast">
-				<Option output="/home/robin/Master/SI3D/gkit2light/bin/RayTraceGPU.exe" prefix_auto="0" extension_auto="0"/>
+			<Target title="shader_kit.exe/fast">
+				<Option output="/home/robin/Master/SI3D/gkit2light/bin/shader_kit.exe" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="bin"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -235,41 +167,7 @@
 					<Add directory="/usr/include/SDL2"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 RayTraceGPU.exe/fast"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="ComputeShaderTest.exe">
-				<Option output="/home/robin/Master/SI3D/gkit2light/bin/ComputeShaderTest.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="bin"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/home/robin/Master/SI3D/gkit2light/src/gKit"/>
-					<Add directory="/usr/include/SDL2"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 ComputeShaderTest.exe"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="ComputeShaderTest.exe/fast">
-				<Option output="/home/robin/Master/SI3D/gkit2light/bin/ComputeShaderTest.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="bin"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/home/robin/Master/SI3D/gkit2light/src/gKit"/>
-					<Add directory="/usr/include/SDL2"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 ComputeShaderTest.exe/fast"/>
+					<Build command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 shader_kit.exe/fast"/>
 					<CompileFile command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -f &quot;/home/robin/Master/SI3D/gkit2light/Makefile&quot;  VERBOSE=1 clean"/>
@@ -285,424 +183,278 @@
 		<Unit filename="/home/robin/Master/SI3D/gkit2light/src/RayTrace/CPU/mainCPU.cpp">
 			<Option target="RayTraceCPU.exe"/>
 		</Unit>
-		<Unit filename="/home/robin/Master/SI3D/gkit2light/src/RayTrace/GPU/ComputeShaderTest.cpp">
-			<Option target="ComputeShaderTest.exe"/>
-		</Unit>
-		<Unit filename="/home/robin/Master/SI3D/gkit2light/src/RayTrace/GPU/RTgpuCompute.cpp">
-			<Option target="RTgpuCompute.exe"/>
-		</Unit>
-		<Unit filename="/home/robin/Master/SI3D/gkit2light/src/RayTrace/GPU/mainGPU.cpp">
-			<Option target="RayTraceGPU.exe"/>
-		</Unit>
-		<Unit filename="/home/robin/Master/SI3D/gkit2light/src/RayTrace/Utils/OpenGLUtils.h">
-			<Option target="RayTraceGPU.exe"/>
-		</Unit>
 		<Unit filename="/home/robin/Master/SI3D/gkit2light/src/RayTrace/Utils/Utils.cpp">
 			<Option target="RayTraceCPU.exe"/>
-			<Option target="RayTraceGPU.exe"/>
 		</Unit>
 		<Unit filename="/home/robin/Master/SI3D/gkit2light/src/RayTrace/Utils/Utils.h">
 			<Option target="RayTraceCPU.exe"/>
-			<Option target="RayTraceGPU.exe"/>
 		</Unit>
 		<Unit filename="/home/robin/Master/SI3D/gkit2light/src/RobotGL/robotGL.cpp">
 			<Option target="RobotGL.exe"/>
 		</Unit>
 		<Unit filename="/home/robin/Master/SI3D/gkit2light/src/gKit/app.cpp">
-			<Option target="RTgpuCompute.exe"/>
-			<Option target="shader_kit.exe"/>
-			<Option target="imageViewer.exe"/>
-			<Option target="RobotGL.exe"/>
 			<Option target="RayTraceCPU.exe"/>
-			<Option target="RayTraceGPU.exe"/>
-			<Option target="ComputeShaderTest.exe"/>
+			<Option target="RobotGL.exe"/>
+			<Option target="imageViewer.exe"/>
+			<Option target="shader_kit.exe"/>
 		</Unit>
 		<Unit filename="/home/robin/Master/SI3D/gkit2light/src/gKit/app.h">
-			<Option target="RTgpuCompute.exe"/>
-			<Option target="shader_kit.exe"/>
-			<Option target="imageViewer.exe"/>
-			<Option target="RobotGL.exe"/>
 			<Option target="RayTraceCPU.exe"/>
-			<Option target="RayTraceGPU.exe"/>
-			<Option target="ComputeShaderTest.exe"/>
+			<Option target="RobotGL.exe"/>
+			<Option target="imageViewer.exe"/>
+			<Option target="shader_kit.exe"/>
 		</Unit>
 		<Unit filename="/home/robin/Master/SI3D/gkit2light/src/gKit/app_camera.cpp">
-			<Option target="RTgpuCompute.exe"/>
-			<Option target="shader_kit.exe"/>
-			<Option target="imageViewer.exe"/>
-			<Option target="RobotGL.exe"/>
 			<Option target="RayTraceCPU.exe"/>
-			<Option target="RayTraceGPU.exe"/>
-			<Option target="ComputeShaderTest.exe"/>
+			<Option target="RobotGL.exe"/>
+			<Option target="imageViewer.exe"/>
+			<Option target="shader_kit.exe"/>
 		</Unit>
 		<Unit filename="/home/robin/Master/SI3D/gkit2light/src/gKit/app_camera.h">
-			<Option target="RTgpuCompute.exe"/>
-			<Option target="shader_kit.exe"/>
-			<Option target="imageViewer.exe"/>
-			<Option target="RobotGL.exe"/>
 			<Option target="RayTraceCPU.exe"/>
-			<Option target="RayTraceGPU.exe"/>
-			<Option target="ComputeShaderTest.exe"/>
+			<Option target="RobotGL.exe"/>
+			<Option target="imageViewer.exe"/>
+			<Option target="shader_kit.exe"/>
 		</Unit>
 		<Unit filename="/home/robin/Master/SI3D/gkit2light/src/gKit/app_time.cpp">
-			<Option target="RTgpuCompute.exe"/>
-			<Option target="shader_kit.exe"/>
-			<Option target="imageViewer.exe"/>
-			<Option target="RobotGL.exe"/>
 			<Option target="RayTraceCPU.exe"/>
-			<Option target="RayTraceGPU.exe"/>
-			<Option target="ComputeShaderTest.exe"/>
+			<Option target="RobotGL.exe"/>
+			<Option target="imageViewer.exe"/>
+			<Option target="shader_kit.exe"/>
 		</Unit>
 		<Unit filename="/home/robin/Master/SI3D/gkit2light/src/gKit/app_time.h">
-			<Option target="RTgpuCompute.exe"/>
-			<Option target="shader_kit.exe"/>
-			<Option target="imageViewer.exe"/>
-			<Option target="RobotGL.exe"/>
 			<Option target="RayTraceCPU.exe"/>
-			<Option target="RayTraceGPU.exe"/>
-			<Option target="ComputeShaderTest.exe"/>
+			<Option target="RobotGL.exe"/>
+			<Option target="imageViewer.exe"/>
+			<Option target="shader_kit.exe"/>
 		</Unit>
 		<Unit filename="/home/robin/Master/SI3D/gkit2light/src/gKit/color.cpp">
-			<Option target="RTgpuCompute.exe"/>
-			<Option target="shader_kit.exe"/>
-			<Option target="imageViewer.exe"/>
-			<Option target="RobotGL.exe"/>
 			<Option target="RayTraceCPU.exe"/>
-			<Option target="RayTraceGPU.exe"/>
-			<Option target="ComputeShaderTest.exe"/>
+			<Option target="RobotGL.exe"/>
+			<Option target="imageViewer.exe"/>
+			<Option target="shader_kit.exe"/>
 		</Unit>
 		<Unit filename="/home/robin/Master/SI3D/gkit2light/src/gKit/color.h">
-			<Option target="RTgpuCompute.exe"/>
-			<Option target="shader_kit.exe"/>
-			<Option target="imageViewer.exe"/>
-			<Option target="RobotGL.exe"/>
 			<Option target="RayTraceCPU.exe"/>
-			<Option target="RayTraceGPU.exe"/>
-			<Option target="ComputeShaderTest.exe"/>
+			<Option target="RobotGL.exe"/>
+			<Option target="imageViewer.exe"/>
+			<Option target="shader_kit.exe"/>
 		</Unit>
 		<Unit filename="/home/robin/Master/SI3D/gkit2light/src/gKit/draw.cpp">
-			<Option target="RTgpuCompute.exe"/>
-			<Option target="shader_kit.exe"/>
-			<Option target="imageViewer.exe"/>
-			<Option target="RobotGL.exe"/>
 			<Option target="RayTraceCPU.exe"/>
-			<Option target="RayTraceGPU.exe"/>
-			<Option target="ComputeShaderTest.exe"/>
+			<Option target="RobotGL.exe"/>
+			<Option target="imageViewer.exe"/>
+			<Option target="shader_kit.exe"/>
 		</Unit>
 		<Unit filename="/home/robin/Master/SI3D/gkit2light/src/gKit/draw.h">
-			<Option target="RTgpuCompute.exe"/>
-			<Option target="shader_kit.exe"/>
-			<Option target="imageViewer.exe"/>
-			<Option target="RobotGL.exe"/>
 			<Option target="RayTraceCPU.exe"/>
-			<Option target="RayTraceGPU.exe"/>
-			<Option target="ComputeShaderTest.exe"/>
+			<Option target="RobotGL.exe"/>
+			<Option target="imageViewer.exe"/>
+			<Option target="shader_kit.exe"/>
 		</Unit>
 		<Unit filename="/home/robin/Master/SI3D/gkit2light/src/gKit/gamepads.cpp">
-			<Option target="RTgpuCompute.exe"/>
-			<Option target="shader_kit.exe"/>
-			<Option target="imageViewer.exe"/>
-			<Option target="RobotGL.exe"/>
 			<Option target="RayTraceCPU.exe"/>
-			<Option target="RayTraceGPU.exe"/>
-			<Option target="ComputeShaderTest.exe"/>
+			<Option target="RobotGL.exe"/>
+			<Option target="imageViewer.exe"/>
+			<Option target="shader_kit.exe"/>
 		</Unit>
 		<Unit filename="/home/robin/Master/SI3D/gkit2light/src/gKit/gamepads.h">
-			<Option target="RTgpuCompute.exe"/>
-			<Option target="shader_kit.exe"/>
-			<Option target="imageViewer.exe"/>
-			<Option target="RobotGL.exe"/>
 			<Option target="RayTraceCPU.exe"/>
-			<Option target="RayTraceGPU.exe"/>
-			<Option target="ComputeShaderTest.exe"/>
+			<Option target="RobotGL.exe"/>
+			<Option target="imageViewer.exe"/>
+			<Option target="shader_kit.exe"/>
 		</Unit>
 		<Unit filename="/home/robin/Master/SI3D/gkit2light/src/gKit/glcore.h">
-			<Option target="RTgpuCompute.exe"/>
-			<Option target="shader_kit.exe"/>
-			<Option target="imageViewer.exe"/>
-			<Option target="RobotGL.exe"/>
 			<Option target="RayTraceCPU.exe"/>
-			<Option target="RayTraceGPU.exe"/>
-			<Option target="ComputeShaderTest.exe"/>
+			<Option target="RobotGL.exe"/>
+			<Option target="imageViewer.exe"/>
+			<Option target="shader_kit.exe"/>
 		</Unit>
 		<Unit filename="/home/robin/Master/SI3D/gkit2light/src/gKit/image.cpp">
-			<Option target="RTgpuCompute.exe"/>
-			<Option target="shader_kit.exe"/>
-			<Option target="imageViewer.exe"/>
-			<Option target="RobotGL.exe"/>
 			<Option target="RayTraceCPU.exe"/>
-			<Option target="RayTraceGPU.exe"/>
-			<Option target="ComputeShaderTest.exe"/>
+			<Option target="RobotGL.exe"/>
+			<Option target="imageViewer.exe"/>
+			<Option target="shader_kit.exe"/>
 		</Unit>
 		<Unit filename="/home/robin/Master/SI3D/gkit2light/src/gKit/image.h">
-			<Option target="RTgpuCompute.exe"/>
-			<Option target="shader_kit.exe"/>
-			<Option target="imageViewer.exe"/>
-			<Option target="RobotGL.exe"/>
 			<Option target="RayTraceCPU.exe"/>
-			<Option target="RayTraceGPU.exe"/>
-			<Option target="ComputeShaderTest.exe"/>
+			<Option target="RobotGL.exe"/>
+			<Option target="imageViewer.exe"/>
+			<Option target="shader_kit.exe"/>
 		</Unit>
 		<Unit filename="/home/robin/Master/SI3D/gkit2light/src/gKit/image_hdr.cpp">
-			<Option target="RTgpuCompute.exe"/>
-			<Option target="shader_kit.exe"/>
-			<Option target="imageViewer.exe"/>
-			<Option target="RobotGL.exe"/>
 			<Option target="RayTraceCPU.exe"/>
-			<Option target="RayTraceGPU.exe"/>
-			<Option target="ComputeShaderTest.exe"/>
+			<Option target="RobotGL.exe"/>
+			<Option target="imageViewer.exe"/>
+			<Option target="shader_kit.exe"/>
 		</Unit>
 		<Unit filename="/home/robin/Master/SI3D/gkit2light/src/gKit/image_hdr.h">
-			<Option target="RTgpuCompute.exe"/>
-			<Option target="shader_kit.exe"/>
-			<Option target="imageViewer.exe"/>
-			<Option target="RobotGL.exe"/>
 			<Option target="RayTraceCPU.exe"/>
-			<Option target="RayTraceGPU.exe"/>
-			<Option target="ComputeShaderTest.exe"/>
+			<Option target="RobotGL.exe"/>
+			<Option target="imageViewer.exe"/>
+			<Option target="shader_kit.exe"/>
 		</Unit>
 		<Unit filename="/home/robin/Master/SI3D/gkit2light/src/gKit/image_io.cpp">
-			<Option target="RTgpuCompute.exe"/>
-			<Option target="shader_kit.exe"/>
-			<Option target="imageViewer.exe"/>
-			<Option target="RobotGL.exe"/>
 			<Option target="RayTraceCPU.exe"/>
-			<Option target="RayTraceGPU.exe"/>
-			<Option target="ComputeShaderTest.exe"/>
+			<Option target="RobotGL.exe"/>
+			<Option target="imageViewer.exe"/>
+			<Option target="shader_kit.exe"/>
 		</Unit>
 		<Unit filename="/home/robin/Master/SI3D/gkit2light/src/gKit/image_io.h">
-			<Option target="RTgpuCompute.exe"/>
-			<Option target="shader_kit.exe"/>
-			<Option target="imageViewer.exe"/>
-			<Option target="RobotGL.exe"/>
 			<Option target="RayTraceCPU.exe"/>
-			<Option target="RayTraceGPU.exe"/>
-			<Option target="ComputeShaderTest.exe"/>
+			<Option target="RobotGL.exe"/>
+			<Option target="imageViewer.exe"/>
+			<Option target="shader_kit.exe"/>
 		</Unit>
 		<Unit filename="/home/robin/Master/SI3D/gkit2light/src/gKit/mat.cpp">
-			<Option target="RTgpuCompute.exe"/>
-			<Option target="shader_kit.exe"/>
-			<Option target="imageViewer.exe"/>
-			<Option target="RobotGL.exe"/>
 			<Option target="RayTraceCPU.exe"/>
-			<Option target="RayTraceGPU.exe"/>
-			<Option target="ComputeShaderTest.exe"/>
+			<Option target="RobotGL.exe"/>
+			<Option target="imageViewer.exe"/>
+			<Option target="shader_kit.exe"/>
 		</Unit>
 		<Unit filename="/home/robin/Master/SI3D/gkit2light/src/gKit/mat.h">
-			<Option target="RTgpuCompute.exe"/>
-			<Option target="shader_kit.exe"/>
-			<Option target="imageViewer.exe"/>
-			<Option target="RobotGL.exe"/>
 			<Option target="RayTraceCPU.exe"/>
-			<Option target="RayTraceGPU.exe"/>
-			<Option target="ComputeShaderTest.exe"/>
+			<Option target="RobotGL.exe"/>
+			<Option target="imageViewer.exe"/>
+			<Option target="shader_kit.exe"/>
 		</Unit>
 		<Unit filename="/home/robin/Master/SI3D/gkit2light/src/gKit/mesh.cpp">
-			<Option target="RTgpuCompute.exe"/>
-			<Option target="shader_kit.exe"/>
-			<Option target="imageViewer.exe"/>
-			<Option target="RobotGL.exe"/>
 			<Option target="RayTraceCPU.exe"/>
-			<Option target="RayTraceGPU.exe"/>
-			<Option target="ComputeShaderTest.exe"/>
+			<Option target="RobotGL.exe"/>
+			<Option target="imageViewer.exe"/>
+			<Option target="shader_kit.exe"/>
 		</Unit>
 		<Unit filename="/home/robin/Master/SI3D/gkit2light/src/gKit/mesh.h">
-			<Option target="RTgpuCompute.exe"/>
-			<Option target="shader_kit.exe"/>
-			<Option target="imageViewer.exe"/>
-			<Option target="RobotGL.exe"/>
 			<Option target="RayTraceCPU.exe"/>
-			<Option target="RayTraceGPU.exe"/>
-			<Option target="ComputeShaderTest.exe"/>
+			<Option target="RobotGL.exe"/>
+			<Option target="imageViewer.exe"/>
+			<Option target="shader_kit.exe"/>
 		</Unit>
 		<Unit filename="/home/robin/Master/SI3D/gkit2light/src/gKit/orbiter.cpp">
-			<Option target="RTgpuCompute.exe"/>
-			<Option target="shader_kit.exe"/>
-			<Option target="imageViewer.exe"/>
-			<Option target="RobotGL.exe"/>
 			<Option target="RayTraceCPU.exe"/>
-			<Option target="RayTraceGPU.exe"/>
-			<Option target="ComputeShaderTest.exe"/>
+			<Option target="RobotGL.exe"/>
+			<Option target="imageViewer.exe"/>
+			<Option target="shader_kit.exe"/>
 		</Unit>
 		<Unit filename="/home/robin/Master/SI3D/gkit2light/src/gKit/orbiter.h">
-			<Option target="RTgpuCompute.exe"/>
-			<Option target="shader_kit.exe"/>
-			<Option target="imageViewer.exe"/>
-			<Option target="RobotGL.exe"/>
 			<Option target="RayTraceCPU.exe"/>
-			<Option target="RayTraceGPU.exe"/>
-			<Option target="ComputeShaderTest.exe"/>
+			<Option target="RobotGL.exe"/>
+			<Option target="imageViewer.exe"/>
+			<Option target="shader_kit.exe"/>
 		</Unit>
 		<Unit filename="/home/robin/Master/SI3D/gkit2light/src/gKit/program.cpp">
-			<Option target="RTgpuCompute.exe"/>
-			<Option target="shader_kit.exe"/>
-			<Option target="imageViewer.exe"/>
-			<Option target="RobotGL.exe"/>
 			<Option target="RayTraceCPU.exe"/>
-			<Option target="RayTraceGPU.exe"/>
-			<Option target="ComputeShaderTest.exe"/>
+			<Option target="RobotGL.exe"/>
+			<Option target="imageViewer.exe"/>
+			<Option target="shader_kit.exe"/>
 		</Unit>
 		<Unit filename="/home/robin/Master/SI3D/gkit2light/src/gKit/program.h">
-			<Option target="RTgpuCompute.exe"/>
-			<Option target="shader_kit.exe"/>
-			<Option target="imageViewer.exe"/>
-			<Option target="RobotGL.exe"/>
 			<Option target="RayTraceCPU.exe"/>
-			<Option target="RayTraceGPU.exe"/>
-			<Option target="ComputeShaderTest.exe"/>
+			<Option target="RobotGL.exe"/>
+			<Option target="imageViewer.exe"/>
+			<Option target="shader_kit.exe"/>
 		</Unit>
 		<Unit filename="/home/robin/Master/SI3D/gkit2light/src/gKit/quaternion.h">
-			<Option target="RTgpuCompute.exe"/>
-			<Option target="shader_kit.exe"/>
-			<Option target="imageViewer.exe"/>
-			<Option target="RobotGL.exe"/>
 			<Option target="RayTraceCPU.exe"/>
-			<Option target="RayTraceGPU.exe"/>
-			<Option target="ComputeShaderTest.exe"/>
+			<Option target="RobotGL.exe"/>
+			<Option target="imageViewer.exe"/>
+			<Option target="shader_kit.exe"/>
 		</Unit>
 		<Unit filename="/home/robin/Master/SI3D/gkit2light/src/gKit/rgbe.cpp">
-			<Option target="RTgpuCompute.exe"/>
-			<Option target="shader_kit.exe"/>
-			<Option target="imageViewer.exe"/>
-			<Option target="RobotGL.exe"/>
 			<Option target="RayTraceCPU.exe"/>
-			<Option target="RayTraceGPU.exe"/>
-			<Option target="ComputeShaderTest.exe"/>
+			<Option target="RobotGL.exe"/>
+			<Option target="imageViewer.exe"/>
+			<Option target="shader_kit.exe"/>
 		</Unit>
 		<Unit filename="/home/robin/Master/SI3D/gkit2light/src/gKit/rgbe.h">
-			<Option target="RTgpuCompute.exe"/>
-			<Option target="shader_kit.exe"/>
-			<Option target="imageViewer.exe"/>
-			<Option target="RobotGL.exe"/>
 			<Option target="RayTraceCPU.exe"/>
-			<Option target="RayTraceGPU.exe"/>
-			<Option target="ComputeShaderTest.exe"/>
+			<Option target="RobotGL.exe"/>
+			<Option target="imageViewer.exe"/>
+			<Option target="shader_kit.exe"/>
 		</Unit>
 		<Unit filename="/home/robin/Master/SI3D/gkit2light/src/gKit/text.cpp">
-			<Option target="RTgpuCompute.exe"/>
-			<Option target="shader_kit.exe"/>
-			<Option target="imageViewer.exe"/>
-			<Option target="RobotGL.exe"/>
 			<Option target="RayTraceCPU.exe"/>
-			<Option target="RayTraceGPU.exe"/>
-			<Option target="ComputeShaderTest.exe"/>
+			<Option target="RobotGL.exe"/>
+			<Option target="imageViewer.exe"/>
+			<Option target="shader_kit.exe"/>
 		</Unit>
 		<Unit filename="/home/robin/Master/SI3D/gkit2light/src/gKit/text.h">
-			<Option target="RTgpuCompute.exe"/>
-			<Option target="shader_kit.exe"/>
-			<Option target="imageViewer.exe"/>
-			<Option target="RobotGL.exe"/>
 			<Option target="RayTraceCPU.exe"/>
-			<Option target="RayTraceGPU.exe"/>
-			<Option target="ComputeShaderTest.exe"/>
+			<Option target="RobotGL.exe"/>
+			<Option target="imageViewer.exe"/>
+			<Option target="shader_kit.exe"/>
 		</Unit>
 		<Unit filename="/home/robin/Master/SI3D/gkit2light/src/gKit/texture.cpp">
-			<Option target="RTgpuCompute.exe"/>
-			<Option target="shader_kit.exe"/>
-			<Option target="imageViewer.exe"/>
-			<Option target="RobotGL.exe"/>
 			<Option target="RayTraceCPU.exe"/>
-			<Option target="RayTraceGPU.exe"/>
-			<Option target="ComputeShaderTest.exe"/>
+			<Option target="RobotGL.exe"/>
+			<Option target="imageViewer.exe"/>
+			<Option target="shader_kit.exe"/>
 		</Unit>
 		<Unit filename="/home/robin/Master/SI3D/gkit2light/src/gKit/texture.h">
-			<Option target="RTgpuCompute.exe"/>
-			<Option target="shader_kit.exe"/>
-			<Option target="imageViewer.exe"/>
-			<Option target="RobotGL.exe"/>
 			<Option target="RayTraceCPU.exe"/>
-			<Option target="RayTraceGPU.exe"/>
-			<Option target="ComputeShaderTest.exe"/>
+			<Option target="RobotGL.exe"/>
+			<Option target="imageViewer.exe"/>
+			<Option target="shader_kit.exe"/>
 		</Unit>
 		<Unit filename="/home/robin/Master/SI3D/gkit2light/src/gKit/uniforms.cpp">
-			<Option target="RTgpuCompute.exe"/>
-			<Option target="shader_kit.exe"/>
-			<Option target="imageViewer.exe"/>
-			<Option target="RobotGL.exe"/>
 			<Option target="RayTraceCPU.exe"/>
-			<Option target="RayTraceGPU.exe"/>
-			<Option target="ComputeShaderTest.exe"/>
+			<Option target="RobotGL.exe"/>
+			<Option target="imageViewer.exe"/>
+			<Option target="shader_kit.exe"/>
 		</Unit>
 		<Unit filename="/home/robin/Master/SI3D/gkit2light/src/gKit/uniforms.h">
-			<Option target="RTgpuCompute.exe"/>
-			<Option target="shader_kit.exe"/>
-			<Option target="imageViewer.exe"/>
-			<Option target="RobotGL.exe"/>
 			<Option target="RayTraceCPU.exe"/>
-			<Option target="RayTraceGPU.exe"/>
-			<Option target="ComputeShaderTest.exe"/>
+			<Option target="RobotGL.exe"/>
+			<Option target="imageViewer.exe"/>
+			<Option target="shader_kit.exe"/>
 		</Unit>
 		<Unit filename="/home/robin/Master/SI3D/gkit2light/src/gKit/vec.cpp">
-			<Option target="RTgpuCompute.exe"/>
-			<Option target="shader_kit.exe"/>
-			<Option target="imageViewer.exe"/>
-			<Option target="RobotGL.exe"/>
 			<Option target="RayTraceCPU.exe"/>
-			<Option target="RayTraceGPU.exe"/>
-			<Option target="ComputeShaderTest.exe"/>
+			<Option target="RobotGL.exe"/>
+			<Option target="imageViewer.exe"/>
+			<Option target="shader_kit.exe"/>
 		</Unit>
 		<Unit filename="/home/robin/Master/SI3D/gkit2light/src/gKit/vec.h">
-			<Option target="RTgpuCompute.exe"/>
-			<Option target="shader_kit.exe"/>
-			<Option target="imageViewer.exe"/>
-			<Option target="RobotGL.exe"/>
 			<Option target="RayTraceCPU.exe"/>
-			<Option target="RayTraceGPU.exe"/>
-			<Option target="ComputeShaderTest.exe"/>
+			<Option target="RobotGL.exe"/>
+			<Option target="imageViewer.exe"/>
+			<Option target="shader_kit.exe"/>
 		</Unit>
 		<Unit filename="/home/robin/Master/SI3D/gkit2light/src/gKit/wavefront.cpp">
-			<Option target="RTgpuCompute.exe"/>
-			<Option target="shader_kit.exe"/>
-			<Option target="imageViewer.exe"/>
-			<Option target="RobotGL.exe"/>
 			<Option target="RayTraceCPU.exe"/>
-			<Option target="RayTraceGPU.exe"/>
-			<Option target="ComputeShaderTest.exe"/>
+			<Option target="RobotGL.exe"/>
+			<Option target="imageViewer.exe"/>
+			<Option target="shader_kit.exe"/>
 		</Unit>
 		<Unit filename="/home/robin/Master/SI3D/gkit2light/src/gKit/wavefront.h">
-			<Option target="RTgpuCompute.exe"/>
-			<Option target="shader_kit.exe"/>
-			<Option target="imageViewer.exe"/>
-			<Option target="RobotGL.exe"/>
 			<Option target="RayTraceCPU.exe"/>
-			<Option target="RayTraceGPU.exe"/>
-			<Option target="ComputeShaderTest.exe"/>
+			<Option target="RobotGL.exe"/>
+			<Option target="imageViewer.exe"/>
+			<Option target="shader_kit.exe"/>
 		</Unit>
 		<Unit filename="/home/robin/Master/SI3D/gkit2light/src/gKit/widgets.cpp">
-			<Option target="RTgpuCompute.exe"/>
-			<Option target="shader_kit.exe"/>
-			<Option target="imageViewer.exe"/>
-			<Option target="RobotGL.exe"/>
 			<Option target="RayTraceCPU.exe"/>
-			<Option target="RayTraceGPU.exe"/>
-			<Option target="ComputeShaderTest.exe"/>
+			<Option target="RobotGL.exe"/>
+			<Option target="imageViewer.exe"/>
+			<Option target="shader_kit.exe"/>
 		</Unit>
 		<Unit filename="/home/robin/Master/SI3D/gkit2light/src/gKit/widgets.h">
-			<Option target="RTgpuCompute.exe"/>
-			<Option target="shader_kit.exe"/>
-			<Option target="imageViewer.exe"/>
-			<Option target="RobotGL.exe"/>
 			<Option target="RayTraceCPU.exe"/>
-			<Option target="RayTraceGPU.exe"/>
-			<Option target="ComputeShaderTest.exe"/>
+			<Option target="RobotGL.exe"/>
+			<Option target="imageViewer.exe"/>
+			<Option target="shader_kit.exe"/>
 		</Unit>
 		<Unit filename="/home/robin/Master/SI3D/gkit2light/src/gKit/window.cpp">
-			<Option target="RTgpuCompute.exe"/>
-			<Option target="shader_kit.exe"/>
-			<Option target="imageViewer.exe"/>
-			<Option target="RobotGL.exe"/>
 			<Option target="RayTraceCPU.exe"/>
-			<Option target="RayTraceGPU.exe"/>
-			<Option target="ComputeShaderTest.exe"/>
+			<Option target="RobotGL.exe"/>
+			<Option target="imageViewer.exe"/>
+			<Option target="shader_kit.exe"/>
 		</Unit>
 		<Unit filename="/home/robin/Master/SI3D/gkit2light/src/gKit/window.h">
-			<Option target="RTgpuCompute.exe"/>
-			<Option target="shader_kit.exe"/>
-			<Option target="imageViewer.exe"/>
-			<Option target="RobotGL.exe"/>
 			<Option target="RayTraceCPU.exe"/>
-			<Option target="RayTraceGPU.exe"/>
-			<Option target="ComputeShaderTest.exe"/>
+			<Option target="RobotGL.exe"/>
+			<Option target="imageViewer.exe"/>
+			<Option target="shader_kit.exe"/>
 		</Unit>
 		<Unit filename="/home/robin/Master/SI3D/gkit2light/src/image_viewer.cpp">
 			<Option target="imageViewer.exe"/>

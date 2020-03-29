@@ -1,6 +1,9 @@
 #ifndef GKIT2LIGHTCMAKE_RAYTRACEIMAGEPROCESSING_H
 #define GKIT2LIGHTCMAKE_RAYTRACEIMAGEPROCESSING_H
 
+#include <chrono>
+#include <random>
+
 #include "image.h"
 #include "orbiter.h"
 #include "wavefront.h"
@@ -21,10 +24,18 @@ public:
   ~RayTraceImageProcessing();
 
   // TODO Explain what the function do
-  void rayTraceExercice5();
+  void rayTrace();
 
-  // TODO Explain what the function do
-  void rayTraceStartingByColorSource();
+  void computePixel(int px, int py,
+                    std::default_random_engine rng,
+                    std::uniform_real_distribution<float> u01);
+
+  Color exercice2Material(Hit hitInfo);
+
+  Color exercice5DirectLightning(Hit hitInfo,
+                                 Ray usedRay,
+                                 std::default_random_engine rng,
+                                 std::uniform_real_distribution<float> u01);
 };
 
 
