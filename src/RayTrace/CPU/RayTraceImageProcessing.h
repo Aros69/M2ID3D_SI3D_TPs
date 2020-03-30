@@ -27,15 +27,15 @@ public:
   void rayTrace();
 
   void computePixel(int px, int py,
-                    std::default_random_engine rng,
-                    std::uniform_real_distribution<float> u01);
+                    std::default_random_engine & rng,
+                    std::uniform_real_distribution<float> &u01);
 
   Color exercice2Material(Hit hitInfo, Ray usedRay);
 
   Color exercice5DirectLightning(Hit hitInfo,
                                  Ray usedRay,
-                                 std::default_random_engine rng,
-                                 std::uniform_real_distribution<float> u01);
+                                 std::default_random_engine &rng,
+                                 std::uniform_real_distribution<float> &u01);
 };
 
 

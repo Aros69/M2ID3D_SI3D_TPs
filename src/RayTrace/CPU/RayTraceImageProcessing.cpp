@@ -35,7 +35,7 @@ void RayTraceImageProcessing::rayTrace() {
 
   // parcourir tous les pixels de l'image
   // en parallele avec openMP, un thread par bloc de 16 lignes
-//#pragma omp parallel for schedule(dynamic, 1)
+#pragma omp parallel for schedule(dynamic, 1)
   for (int py = 0; py < image.height(); py++) {
     // nombres aleatoires, version c++11
     std::random_device seed;
@@ -60,8 +60,8 @@ void RayTraceImageProcessing::rayTrace() {
 }
 
 void RayTraceImageProcessing::computePixel(int px, int py,
-                                           std::default_random_engine rng,
-                                           std::uniform_real_distribution<float> u01) {
+                                           std::default_random_engine &rng,
+                                           std::uniform_real_distribution<float> &u01) {
   /*std::cout << "Pixel : (" << px << ", " << py << ") pour une image de taille : "
                 << image.width() << "x" << image.height() << std::endl;*/
   // recupere les transformations view, projection et viewport pour generer les rayons
@@ -84,8 +84,8 @@ void RayTraceImageProcessing::computePixel(int px, int py,
   Ray ray(o, e);
   // calculer les intersections
   if (Hit hit = bvh->intersect(ray)) {
-    //color = exercice2Material(hit, ray);
-    color = exercice5DirectLightning(hit, ray, rng, u01);
+    color = exercice2Material(hit, ray);
+    //color = exercice5DirectLightning(hit, ray, rng, u01);
   }
   image(px, py) = Color(color, 1);
 }
@@ -97,14 +97,13 @@ Color RayTraceImageProcessing::exercice2Material(Hit hitInfo, Ray usedRay) {
   float cos_theta = std::max(0.f, dot(pn, normalize(-usedRay.d)));
   if (material.emission.power() > 0) {
     return material.emission * material.diffuse * cos_theta;
-  }
-  else { return material.diffuse * cos_theta; }
+  } else { return material.diffuse * cos_theta; }
 }
 
 Color RayTraceImageProcessing::exercice5DirectLightning(Hit hitInfo,
                                                         Ray usedRay,
-                                                        std::default_random_engine rng,
-                                                        std::uniform_real_distribution<float> u01) {
+                                                        std::default_random_engine &rng,
+                                                        std::uniform_real_distribution<float> &u01) {
   Color color = Black();
   // recuperer le triangle
   const TriangleData &triangle = mesh.triangle(hitInfo.triangle_id);
@@ -127,17 +126,11 @@ Color RayTraceImageProcessing::exercice5DirectLightning(Hit hitInfo,
 
     Point origin = p;
     for (int i = 0; i < nbRay; ++i) {
-      float r1 = u01(rng);
-      float r2 = u01(rng);
-      float temp = sqrt(r1);
-      float alpha = 1 - temp;
-      float beta = (1 - r2) * temp;
-      float lambda = r2 * temp;
+      //Point extremite(squareRootParametrization(s));
+      Point extremite(square2TriangleParametrization(s));
 
-      Point extremite(Point(s.a * alpha + s.b * beta + s.c * lambda));
-      // Un des point du triangle selectionne empiriquement
-      //Point extremite(Point(s.a));
       double epsilon = 0.000001;
+
       /*origin = origin + epsilon * pn;
       extremite = extremite + epsilon * (extremite - origin);*/
       Ray rayon(origin + pn * epsilon, extremite + epsilon * (extremite - origin));

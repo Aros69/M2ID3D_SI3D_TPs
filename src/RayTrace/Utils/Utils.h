@@ -6,6 +6,7 @@
 #include <cfloat>
 #include <cassert>
 #include <cmath>
+#include <random>
 
 #include "vec.h"
 #include "mesh.h"
@@ -196,6 +197,9 @@ struct World {
   Vector b;
   Vector n;
 };
+
+Point squareRootParametrization(Source source);
+Point square2TriangleParametrization(Source source);
 
 double calcBrbf(double kFactor, double mFactor, double cosTeta);
 
