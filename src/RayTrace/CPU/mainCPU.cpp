@@ -10,7 +10,7 @@ int main(const int argc, const char **argv) {
   printf("%s: '%s' '%s'\n", argv[0], mesh_filename, orbiter_filename);
 
   RayTraceImageProcessing p(mesh_filename, orbiter_filename);
-  p.rayTraceExercice5();
+  p.rayTrace();
 
   return 0;
 }

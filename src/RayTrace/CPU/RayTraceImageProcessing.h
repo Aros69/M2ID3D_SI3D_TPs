@@ -30,7 +30,7 @@ public:
                     std::default_random_engine rng,
                     std::uniform_real_distribution<float> u01);
 
-  Color exercice2Material(Hit hitInfo);
+  Color exercice2Material(Hit hitInfo, Ray usedRay);
 
   Color exercice5DirectLightning(Hit hitInfo,
                                  Ray usedRay,

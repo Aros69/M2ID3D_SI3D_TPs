@@ -35,7 +35,7 @@ void RayTraceImageProcessing::rayTrace() {
 
   // parcourir tous les pixels de l'image
   // en parallele avec openMP, un thread par bloc de 16 lignes
-#pragma omp parallel for schedule(dynamic, 1)
+//#pragma omp parallel for schedule(dynamic, 1)
   for (int py = 0; py < image.height(); py++) {
     // nombres aleatoires, version c++11
     std::random_device seed;
@@ -84,16 +84,21 @@ void RayTraceImageProcessing::computePixel(int px, int py,
   Ray ray(o, e);
   // calculer les intersections
   if (Hit hit = bvh->intersect(ray)) {
-    //color = exercice2Material(hit);
+    //color = exercice2Material(hit, ray);
     color = exercice5DirectLightning(hit, ray, rng, u01);
   }
   image(px, py) = Color(color, 1);
 }
 
-Color RayTraceImageProcessing::exercice2Material(Hit hitInfo) {
-  // Récuparation de la matiere du triangle
+Color RayTraceImageProcessing::exercice2Material(Hit hitInfo, Ray usedRay) {
   const Material &material = mesh.triangle_material(hitInfo.triangle_id);
-  return material.diffuse;
+  const TriangleData &triangle = mesh.triangle(hitInfo.triangle_id);
+  Vector pn = normal(hitInfo, triangle);
+  float cos_theta = std::max(0.f, dot(pn, normalize(-usedRay.d)));
+  if (material.emission.power() > 0) {
+    return material.emission * material.diffuse * cos_theta;
+  }
+  else { return material.diffuse * cos_theta; }
 }
 
 Color RayTraceImageProcessing::exercice5DirectLightning(Hit hitInfo,
