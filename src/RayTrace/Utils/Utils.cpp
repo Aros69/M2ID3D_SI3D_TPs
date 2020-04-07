@@ -38,3 +38,12 @@ Point square2TriangleParametrization(Source source) {
 double calcBrbf(double kFactor, double mFactor, double cosTeta) {
   return (kFactor / M_PI) + (1 - kFactor) * ((mFactor + 8) / (8 * M_PI)) * cosTeta;
 }
+
+float aireTRect(TriangleData triangle) {
+  float ab = distance(triangle.a, triangle.b);
+  float ac = distance(triangle.a, triangle.c);
+  float bc = distance(triangle.c, triangle.b);
+  if (ab > ac && ab > bc) { return ac * bc / 2; }
+  else if (ac > ab && ac > bc) { return ab * bc / 2; }
+  else { return ac * ab / 2; }
+}

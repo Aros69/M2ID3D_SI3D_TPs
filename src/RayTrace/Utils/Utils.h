@@ -203,6 +203,9 @@ Point square2TriangleParametrization(Source source);
 
 double calcBrbf(double kFactor, double mFactor, double cosTeta);
 
+// TODO améliorer pour triangle quelconque !!
+float aireTRect(TriangleData triangle);
+
 #endif //GKIT2LIGHTCMAKE_UTILS_H
 
 

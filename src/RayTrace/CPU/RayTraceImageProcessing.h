@@ -11,12 +11,17 @@
 #include "../Utils/Utils.h"
 
 class RayTraceImageProcessing {
+public:
+  int pxDebug, pyDebug;
+
 private :
   Image image;
   Mesh mesh;
   BVH *bvh;
   Sources *sources;
   Orbiter camera;
+  std::string path = "data/Result/";
+  std::string filename = "TempRender";
 
 public:
   RayTraceImageProcessing(const char *meshPath, const char *orbiterPath);
@@ -36,6 +41,11 @@ public:
                                  Ray usedRay,
                                  std::default_random_engine &rng,
                                  std::uniform_real_distribution<float> &u01);
+
+  void applyTonemapping();
+
+  void hardSaveDirectLightning();
+  void hardLoadDirectLightning();
 };
 
 
