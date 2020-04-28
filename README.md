@@ -1,6 +1,6 @@
 # M2 ID3D Synthèse d'Images 3D TPs
 ##### Auteur : Donnay Robin <donnay.robin@gmail.com>
-*Ce readme a été rédigé en utilisant la visionneuse Markdown de Visual Studio Code, pour un résultat se rapprochant de la vision de l'auteur, nous vous conseillons de l'utiliser (Ctrl+Maj+V sur le ReadMe, ouvert, avec Visual Studio Code)*
+*Ce readme a été rédigé en utilisant la visionneuse Markdown de Visual Studio Code, pour un résultat se rapprochant de la vision de l'auteur, nous vous conseillons de l'utiliser (Ctrl+Maj+V sur le ReadMe, ouvert, avec Visual Studio Code). De plus, la visionneuse Markdown github ne prends pas en compte les tableaux réalisés ici.*
 
 ![MainImage](doc/Ex7_1000Ray_CombinedEx5Tonemapped.png)
 
