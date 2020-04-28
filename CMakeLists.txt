@@ -51,3 +51,14 @@ target_link_libraries(RayTraceCPU.exe
         ${SDL2_IMG_LIBRARIES}
         ${GLEW_LIBRARIES}
         ${OPENGL_LIBRARIES})
+
+add_executable(Direction.exe
+        ${GKIT_SRC_FILES}
+        src/RayTrace/Utils/directions.cpp
+        src/RayTrace/Utils/Utils.h
+        src/RayTrace/Utils/Utils.cpp)
+target_link_libraries(Direction.exe
+        ${SDL2_LIBRARIES}
+        ${SDL2_IMG_LIBRARIES}
+        ${GLEW_LIBRARIES}
+        ${OPENGL_LIBRARIES})

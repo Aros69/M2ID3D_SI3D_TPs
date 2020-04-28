@@ -4,13 +4,25 @@
 
 #include "RayTraceImageProcessing.h"
 
-RayTraceImageProcessing::RayTraceImageProcessing(const char *meshPath,
-                                                 const char *orbiterPath)
-// creer l'image resultat
-    : image(1024, 640) {
-  //: image(128, 64) {
+RayTraceImageProcessing::RayTraceImageProcessing(std::string meshPath,
+                                                 std::string orbiterPath,
+                                                 std::string savePathFile,
+                                                 std::string directLightningSave,
+                                                 std::string renderTechnique,
+                                                 std::string pdfMethod,
+                                                 std::string triangleParam,
+                                                 std::string directionParam,
+                                                 int directRay, int indirectRay,
+                                                 bool applyTonemapping,
+                                                 bool debug, unsigned int resImageWidth,
+                                                 unsigned int resImageHeight)
+// creer l'image resultat : ne pas changer les dimensions en cas d'utilisation
+// de la sauvegarde de l'ecalirage direct sinon bug tres probable
+    : imageResultat(resImageWidth, resImageHeight),
+      directLighthningImage(resImageWidth, resImageHeight) {
+
   // charger un objet
-  mesh = read_mesh(meshPath);
+  mesh = read_mesh(meshPath.c_str());
   if (mesh.triangle_count() == 0)
     // erreur de chargement, pas de triangles
     exit(0);
@@ -20,9 +32,27 @@ RayTraceImageProcessing::RayTraceImageProcessing(const char *meshPath,
   sources = new Sources(mesh);
 
   // charger la camera
-  if (camera.read_orbiter(orbiterPath))
+  if (camera.read_orbiter(orbiterPath.c_str()))
     // erreur, pas de camera
     exit(0);
+  nbDirectRay = directRay;
+  nbIndirectRay = indirectRay;
+  useTonemapping = applyTonemapping;
+  showColorOverFlow = debug;
+  if (!savePathFile.empty()) { pathAndFilename = savePathFile; }
+  if (!directLightningSave.empty()) {
+    directLightningFile = directLightningSave;
+    hardLoadDirectLightning();
+    directLightningBeforeBounceDone = true;
+  }
+  if (!renderTechnique.empty()) { renderWanted = renderTechnique; }
+  if (!pdfMethod.empty()) { pdfTechnique = pdfMethod; }
+  if (triangleParam ==
+      "squareRoot") { triangleParametrization = squareRootParametrization; }
+  else { triangleParametrization = square2TriangleParametrization; }
+  if (directionParam ==
+      "uniform") { directionParametrization = randomPointHemisphereUniform; }
+  else { directionParametrization = randomPointHemisphereDistributed; }
 }
 
 RayTraceImageProcessing::~RayTraceImageProcessing() {
@@ -38,19 +68,60 @@ void RayTraceImageProcessing::rayTrace() {
 
   // parcourir tous les pixels de l'image
   // en parallele avec openMP, un thread par bloc de 16 lignes
-#pragma omp parallel for schedule(dynamic, 1)
-  for (int py = 0; py < image.height(); py++) {
-    // nombres aleatoires, version c++11
-    std::random_device seed;
-    // un generateur par thread... pas de synchronisation
-    std::default_random_engine rng(seed());
-    // nombres aleatoires entre 0 et 1
-    std::uniform_real_distribution<float> u01(0.f, 1.f);
-
-    for (int px = 0; px < image.width(); px++) {
-      computePixel(px, py, rng, u01);
+  int nbPixelDone = 0;
+  if (renderWanted != "Ex7" || !directLightningBeforeBounceDone) {
+#pragma omp parallel for schedule(dynamic, 1) default(none) shared(nbPixelDone, std::cout)
+    for (int py = 0; py < imageResultat.height(); py++) {
+      // nombres aleatoires, version c++11
+      std::random_device seed;
+      // un generateur par thread... pas de synchronisation
+      std::default_random_engine rng(seed());
+      // nombres aleatoires entre 0 et 1
+      std::uniform_real_distribution<float> u01(0.f, 1.f);
+      for (int px = 0; px < imageResultat.width(); px++) {
+        if (nbPixelDone % (imageResultat.width() * imageResultat.height() / 100) == 0 &&
+            ((nbPixelDone / float(imageResultat.width() * imageResultat.height()) * 100) +
+             1) > 1) {
+          std::cout
+              << int(floor(
+                  (nbPixelDone / float(imageResultat.width() * imageResultat.height()) *
+                   100) + 1))
+              << "% Direct Lightning Done" << std::endl;
+        }
+        computePixel(px, py, rng, u01);
+        nbPixelDone++;
+      }
+    }
+    directLightningBeforeBounceDone = true;
+    hardSaveDirectLightning();
+  }
+  if (renderWanted == "Ex7") {
+    nbPixelDone = 0;
+#pragma omp parallel for schedule(dynamic, 1) default(none) shared(nbPixelDone, std::cout)
+    for (int py = 0; py < imageResultat.height(); py++) {
+      // nombres aleatoires, version c++11
+      std::random_device seed;
+      // un generateur par thread... pas de synchronisation
+      std::default_random_engine rng(seed());
+      // nombres aleatoires entre 0 et 1
+      std::uniform_real_distribution<float> u01(0.f, 1.f);
+      for (int px = 0; px < imageResultat.width(); px++) {
+        if (nbPixelDone % (imageResultat.width() * imageResultat.height() / 100) == 0 &&
+            ((nbPixelDone / float(imageResultat.width() * imageResultat.height()) * 100) +
+             1) > 1) {
+          std::cout
+              << int(floor(
+                  (nbPixelDone / float(imageResultat.width() * imageResultat.height()) *
+                   100) + 1))
+              << "% Indirect Lightning Done" << std::endl;
+        }
+        computePixel(px, py, rng, u01);
+        nbPixelDone++;
+      }
     }
   }
+  if (useTonemapping) { applyTonemapping(); }
+
 
   auto cpu_stop = std::chrono::high_resolution_clock::now();
   int cpu_time = std::chrono::duration_cast<std::chrono::milliseconds>(
@@ -58,10 +129,8 @@ void RayTraceImageProcessing::rayTrace() {
   printf("cpu  %ds %03dms\n", int(cpu_time / 1000), int(cpu_time % 1000));
 
   // enregistrer l'image resultat
-  //hardLoadDirectLightning();
-  hardSaveDirectLightning();
-  write_image(image, (path + filename + ".png").c_str());
-  write_image_hdr(image, (path + filename + ".hdr").c_str());
+  write_image(imageResultat, (pathAndFilename + ".png").c_str());
+  write_image_hdr(imageResultat, (pathAndFilename + ".hdr").c_str());
 }
 
 void RayTraceImageProcessing::computePixel(int px, int py,
@@ -69,8 +138,10 @@ void RayTraceImageProcessing::computePixel(int px, int py,
                                            std::uniform_real_distribution<float> &u01) {
   Transform model = Identity();
   Transform view = camera.view();
-  Transform projection = camera.projection(image.width(), image.height(), 45);
-  Transform viewport = Viewport(image.width(), image.height());
+  Transform projection = camera.projection(imageResultat.width(),
+                                           imageResultat.height(),
+                                           45);
+  Transform viewport = Viewport(imageResultat.width(), imageResultat.height());
   Color color = Black();
 
   // generer le rayon pour le pixel (x, y)
@@ -86,11 +157,31 @@ void RayTraceImageProcessing::computePixel(int px, int py,
   Ray ray(o, e);
   // calculer les intersections
   if (Hit hit = bvh->intersect(ray)) {
-    //color = exercice2Material(hit, ray);
     pxDebug = px, pyDebug = py;
-    color = exercice5DirectLightning(hit, ray, rng, u01);
+    if (renderWanted == "Ex2") { color = exercice2Material(hit, ray); }
+    else if (renderWanted == "Ex5") {
+      color = exercice5DirectLightning(hit, ray, rng, u01);
+    } else if (renderWanted == "Ex7")
+      if (directLightningBeforeBounceDone) {
+        color = exercice7Rebond(hit, ray, rng, u01, px, py);
+      } else {
+        color = exercice5DirectLightning(hit, ray, rng, u01);
+        Color resColor;
+        resColor.r = std::min(color.r, 1.f);
+        resColor.g = std::min(color.g, 1.f);
+        resColor.b = std::min(color.b, 1.f);
+        directLighthningImage(px, py) = Color(resColor, 1);
+      }
+    else {
+      color = occlusionAmbiante(hit, ray);
+    }
   }
-  image(px, py) = Color(color, 1);
+
+  if (showColorOverFlow && (color.r > 1.f || color.g > 1.f || color.b > 1.f)) {
+    color = Yellow();
+  }
+
+  imageResultat(px, py) = Color(color, 1);
 }
 
 Color RayTraceImageProcessing::exercice2Material(Hit hitInfo, Ray usedRay) {
@@ -119,97 +210,215 @@ Color RayTraceImageProcessing::exercice5DirectLightning(Hit hitInfo,
 
   // Pour toute les sources, crer un/des rayon(s) du point de l'intersection : pointCameraMesh à la sources
   // Si l'intersection touche le point source alors on l'éclair sinon non
-  int nbRay = 100;
-  int nbSource = sources->sources.size();
-  for (auto s : sources->sources) {
+  if (nbDirectRay % sources->sources.size() != 0) {
+    nbDirectRay += sources->sources.size() - nbDirectRay % sources->sources.size();
+  }
+  if (pdfTechnique == "AreaSources") {
+    float areaSources = 0;
+    for (auto s : sources->sources) {
+      areaSources += aireTriangle(s.a, s.b, s.c);
+    }
+    areaSources = 1.0f / areaSources;
+    float pdf = areaSources;
+    for (auto s : sources->sources) {
+      Point origin = pointCameraMesh;
+      for (int i = 0; i < nbDirectRay / sources->sources.size(); ++i) {
+        Point extremite(triangleParametrization(s));
+
+        float epsilon = 0.000001;
+
+        origin = origin + epsilon * normalCameraMesh;
+        extremite = extremite + epsilon * (extremite - origin);
+        Ray rayLight(origin, extremite);
+        if (Hit hitLight = bvh->intersect(rayLight)) {
+          const TriangleData &triangleLight = mesh.triangle(hitLight.triangle_id);
+          const Material &materialLight = mesh.triangle_material(hitLight.triangle_id);
+          if (materialLight.emission.power() > 0) {
+            float cosCameraMesh =
+                std::max(0.f, dot(normalCameraMesh, normalize(rayLight.d)));
+            Vector normalMeshLight = normal(hitLight, triangleLight);
+            if (dot(normalMeshLight, rayLight.d) > 0) {
+              normalMeshLight = -normalMeshLight;
+            }
+            float cosMeshLight =
+                std::max(0.f, dot(normalMeshLight, normalize(-rayLight.d)));
+            color = color +
+                    // Lumière emise par le point touche : Le(s)
+                    (materialLight.emission *
+                     // fr(sk,pointCameraMesh,o) couleur du materiaux ici cas mixte ???
+                     //calcBrbf(0.5, 0.5, cosMeshLight) * material.diffuse *
+                     // Old brbf
+                     1.f / float(M_PI) * material.diffuse *
+                     // (cosTeta*costTeta_sk)
+                     ((cosCameraMesh * cosMeshLight) /
+                      // dist^2(sk,pointCameraMesh)
+                      distance2(origin, extremite)) *
+                     // 1/pdf(sk)
+                     1.0f / pdf);
+          }
+        }
+      }
+    }
+  } else if (pdfTechnique == "CosAndDistance") {
+    World w = World(normalCameraMesh);
     Point origin = pointCameraMesh;
-    for (int i = 0; i < nbRay; ++i) {
-      //Point extremite(squareRootParametrization(s));
-      Point extremite(square2TriangleParametrization(s));
-
-      float epsilon = 0.000001;
-
-      origin = origin + epsilon * normalCameraMesh;
-      extremite = extremite + epsilon * (extremite - origin);
-      Ray rayLight(origin, extremite);
+    float epsilon = 0.000001, pdf, miniPdf;
+    origin = origin + epsilon * normalCameraMesh;
+    for (int i = 0; i < nbDirectRay; ++i) {
+      Point extremite = directionParametrization(miniPdf);
+      Ray rayLight = Ray(origin, w(Vector(extremite)));
+      float cosCameraMesh = miniPdf * M_PI;
+      //std::max(0.f, dot(normalCameraMesh, normalize(rayLight.d)));
       if (Hit hitLight = bvh->intersect(rayLight)) {
         const TriangleData &triangleLight = mesh.triangle(hitLight.triangle_id);
         const Material &materialLight = mesh.triangle_material(hitLight.triangle_id);
+        Vector normalMeshLight = normal(hitLight, triangleLight);
+        float cosMeshLight =
+            std::max(0.f, dot(normalMeshLight, normalize(-rayLight.d)));
         if (materialLight.emission.power() > 0) {
-          float pdf = 1.0f/aireTRect(triangleLight);
-          float cosCameraMesh =
-              std::max(0.f, dot(normalCameraMesh, normalize(rayLight.d)));
-          Vector normalMeshLight = normal(hitLight, triangleLight);
-          if (dot(normalMeshLight, rayLight.d) > 0) {
-            normalMeshLight = -normalMeshLight;
-          }
-          float cosMeshLigth =
-              std::max(0.f, dot(normalMeshLight, normalize(-rayLight.d)));
-
-// Formule lumière : Lr = Le(pointCameraMesh) + Sum(Le(s)*fr(sk,pointCameraMesh,o)*(cosTeta*costTeta_sk)/dist^2(sk,pointCameraMesh)*1/pdf(sk))
-// pdf(sk) densite de proba de l'aire sur la source (si on prends 10 points uniformement sur la source, proba = 1/10)
-// Vu que c'est pas forcément uniforme, pdf peux varier
+          Point e = point(hitLight, rayLight);
+          pdf = miniPdf * (cosMeshLight / distance2(origin, e));
           color = color +
                   // Lumière emise par le point touche : Le(s)
                   (materialLight.emission *
                    // fr(sk,pointCameraMesh,o) couleur du materiaux ici cas mixte ???
-                   //calcBrbf(0.5, 0.5, cosMeshLigth) * material.diffuse *
+                   //calcBrbf(0.5, 0.5, cosMeshLight) * material.diffuse *
                    // Old brbf
                    1.f / float(M_PI) * material.diffuse *
                    // (cosTeta*costTeta_sk)
-                   ((cosCameraMesh * cosMeshLigth) /
+                   ((cosCameraMesh * cosMeshLight) /
                     // dist^2(sk,pointCameraMesh)
-                    distance2(origin, extremite))) /
-                  // 1/pdf(sk) : répartition uniforme donc proba uniforme
-                  pdf;
+                    distance2(origin, e)) *
+                   // 1/pdf(sk)
+                   1.0f / pdf);
+        }
+      }
+    }
+  } else {
+// Combined Method
+  }
 
-          /*if (color.power() > 1) {
-            printf("Pixel(%d, %d) : \n", pxDebug, pyDebug);
-            printf("   BRBF = %f\n", calcBrbf(0.5, 0.5, cosMeshLigth));
-            printf("   Dist = %f\n", distance2(origin, extremite));
-            printf("   Double cos = %f, %f\n", cosCameraMesh, cosMeshLigth);
-            printf("   (%f, %f, %f)\n", color.r, color.g, color.b);
-          }*/
+
+  color = color * (1.0f / float(nbDirectRay));
+  color = color + material.emission;
+
+  return
+      color;
+}
+
+Color RayTraceImageProcessing::occlusionAmbiante(Hit hitInfo, Ray usedRay) {
+  const Material &material = mesh.triangle_material(hitInfo.triangle_id);
+  const TriangleData &triangle = mesh.triangle(hitInfo.triangle_id);
+  if (material.emission.power() > 0) { return material.emission; }
+  else {
+    Point origin = point(hitInfo, usedRay);
+    Vector normalCameraMesh = normal(hitInfo, triangle);
+    float epsilon = 0.000001;
+    origin = origin + normalCameraMesh * epsilon;
+    World w = World(normalCameraMesh);
+    Color color = material.diffuse;
+    float pdf, ambianteOclusionFactor = 0;
+    for (int i = 0; i < nbDirectRay; ++i) {
+      Point extremite = directionParametrization(pdf);
+      Ray r = Ray(origin, w(Vector(extremite)));
+      float cosThetaK = std::max(0.f, dot(normalCameraMesh, normalize(r.d)));
+      Hit hit = bvh->intersect(r);
+      if (hit != 1) {
+        ambianteOclusionFactor += cosThetaK * (1.0 / pdf);
+      }
+    }
+    color = color
+            * (ambianteOclusionFactor * (1.0f / M_PI) * (1.0f / float(nbDirectRay)));
+    return color;
+  }
+}
+
+Color RayTraceImageProcessing::exercice7Rebond(Hit hitInfo, Ray usedRay,
+                                               std::default_random_engine &rng,
+                                               std::uniform_real_distribution<float> &u01,
+                                               int px, int py) {
+  Transform view = camera.view();
+  Transform projection = camera.projection(imageResultat.width(),
+                                           imageResultat.height(),
+                                           45);
+  Transform viewport = Viewport(imageResultat.width(), imageResultat.height());
+  Color color = Black();
+  const Material &material = mesh.triangle_material(hitInfo.triangle_id);
+  const TriangleData &triangle = mesh.triangle(hitInfo.triangle_id);
+  Point pointCameraMesh = point(hitInfo, usedRay);
+  // normale interpolee du triangle au point d'intersection
+  Vector normalCameraMesh = normal(hitInfo, triangle);
+  // retourne la normale pour faire face a la camera / origine du rayon...
+  if (dot(normalCameraMesh, usedRay.d) > 0) { normalCameraMesh = -normalCameraMesh; }
+
+  float epsilon = 0.000001, pdf;
+  pointCameraMesh = pointCameraMesh + normalCameraMesh * epsilon;
+  World w = World(normalCameraMesh);
+  for (int i = 0; i < nbIndirectRay; ++i) {
+    Point extremite = directionParametrization(pdf);
+    Ray r = Ray(pointCameraMesh, w(Vector(extremite)));
+    float cosThetaK = std::max(0.f, dot(normalCameraMesh, normalize(r.d)));
+    Hit hit = bvh->intersect(r);
+    if (hit) {
+      // Trouver le pixel correspondant dans l'image pour obtenir sa couleur
+      Point oWorld = point(hit, r);
+      Point o = Point(viewport(projection(view(oWorld))));
+      int pixelTouchedX = floor(o.x), pixelTouchedY = floor((o.y));
+      if (pixelTouchedX >= 0 && pixelTouchedX <= directLighthningImage.width()
+          && pixelTouchedY >= 0 && pixelTouchedY <= directLighthningImage.height()
+          && o.z >= 0 && o.z <= 1) {
+        Point origin(view.inverse()(projection.inverse()(
+            viewport.inverse()(Point(o.x, o.y, 0)))));
+        // extremite dans l'image
+        Point extremite(view.inverse()(projection.inverse()(
+            viewport.inverse()(Point(o.x, o.y, 1)))));
+        Ray ray(origin, extremite);
+        Hit isSamePixel = bvh->intersect(ray);
+        Point t = point(isSamePixel, ray);
+        float seuil = 0.001;
+        if (oWorld.x >= t.x - seuil && oWorld.x <= t.x + seuil
+            && oWorld.y >= t.y - seuil && oWorld.y <= t.y + seuil
+            && oWorld.z >= t.z - seuil && oWorld.z <= t.z + seuil) {
+          color = color +
+                  // Lumière emise par le point touche : Le(s)
+                  directLighthningImage(pixelTouchedX, pixelTouchedY) *
+                  // fr(sk,pointCameraMesh,o) couleur du materiaux
+                  1.f / float(M_PI) * material.diffuse *
+                  // cosTeta
+                  cosThetaK *
+                  (1.0 / pdf);
         }
       }
     }
   }
-  color = color * (1.0f / float(nbRay*nbSource));
-  color = color + material.emission;
-
-  if (color.power() > 1 && material.emission.power()==0) {
-    printf("Pixel(%d, %d) : \n", pxDebug, pyDebug);
-    printf("   (%f, %f, %f)\n", color.r, color.g, color.b);
-    color = Yellow();
-  }
+  color = color / float(nbIndirectRay) + directLighthningImage(px, py);
   return color;
 }
 
 void RayTraceImageProcessing::applyTonemapping() {
-  for (int py = 0; py < image.height(); py++) {
-    for (int px = 0; px < image.width(); px++) {
-      image(px, py).r = pow(image(px, py).r, 1.0 / 2.2);
-      image(px, py).g = pow(image(px, py).g, 1.0 / 2.2);
-      image(px, py).b = pow(image(px, py).b, 1.0 / 2.2);
+  for (int py = 0; py < imageResultat.height(); py++) {
+    for (int px = 0; px < imageResultat.width(); px++) {
+      imageResultat(px, py).r = pow(imageResultat(px, py).r, 1.0 / 2.2);
+      imageResultat(px, py).g = pow(imageResultat(px, py).g, 1.0 / 2.2);
+      imageResultat(px, py).b = pow(imageResultat(px, py).b, 1.0 / 2.2);
     }
   }
 }
 
 void RayTraceImageProcessing::hardSaveDirectLightning() {
   FILE *fichier;
-  fichier = fopen((path + filename + ".taf").c_str(), "w");
+  fichier = fopen((pathAndFilename + ".taf").c_str(), "w");
   if (fichier == NULL) {
     fprintf(stderr, "Erreur à l'ouvertur du fichier\n");
   } else {
     Color color;
-    for (int py = 0; py < image.height(); py++) {
-      for (int px = 0; px < image.width(); px++) {
-        color = image(px, py);
+    for (int py = 0; py < imageResultat.height(); py++) {
+      for (int px = 0; px < imageResultat.width(); px++) {
+        color = imageResultat(px, py);
         int r = (int) std::min(std::floor(color.r * 255.f), 255.f);
         int g = (int) std::min(std::floor(color.g * 255.f), 255.f);
         int b = (int) std::min(std::floor(color.b * 255.f), 255.f);
         fprintf((fichier), "%d %d %d ", r, g, b);
-        //printf("%d %d %d ", r, g, b);
       }
       fprintf((fichier), "\n");
     }
@@ -218,22 +427,19 @@ void RayTraceImageProcessing::hardSaveDirectLightning() {
 
 void RayTraceImageProcessing::hardLoadDirectLightning() {
   FILE *fichier;
-  fichier = fopen((path + filename + ".taf").c_str(), "r");
+  fichier = fopen((directLightningFile).c_str(), "r");
   if (fichier == NULL) {
     fprintf(stderr, "Erreur à l'ouvertur du fichier\n");
   } else {
     Color color;
-    for (int py = 0; py < image.height(); py++) {
-      for (int px = 0; px < image.width(); px++) {
-        //char *r, *g, *b, *a;
+    for (int py = 0; py < imageResultat.height(); py++) {
+      for (int px = 0; px < imageResultat.width(); px++) {
         unsigned int r, g, b;
         fscanf((fichier), "%d %d %d ", &r, &g, &b);
-        //printf("%s %s %s %s ", r, g, b, a);
-        image(px, py) = Color(((float) r) / 255.f,
-                              ((float) g) / 255.f,
-                              ((float) b) / 255.f, 1);
+        directLighthningImage(px, py) = Color(((float) r) / 255.f,
+                                              ((float) g) / 255.f,
+                                              ((float) b) / 255.f, 1);
       }
-      //printf("\n");
       fscanf((fichier), "\n");
     }
   }

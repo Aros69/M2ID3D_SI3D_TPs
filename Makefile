@@ -137,6 +137,19 @@ RobotGL.exe/fast:
 .PHONY : RobotGL.exe/fast
 
 #=============================================================================
+# Target rules for targets named Direction.exe
+
+# Build rule for target.
+Direction.exe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Direction.exe
+.PHONY : Direction.exe
+
+# fast build rule for target.
+Direction.exe/fast:
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/build
+.PHONY : Direction.exe/fast
+
+#=============================================================================
 # Target rules for targets named shader_kit.exe
 
 # Build rule for target.
@@ -223,6 +236,7 @@ src/RayTrace/Utils/Utils.o: src/RayTrace/Utils/Utils.cpp.o
 # target to build an object file
 src/RayTrace/Utils/Utils.cpp.o:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/RayTrace/Utils/Utils.cpp.o
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/RayTrace/Utils/Utils.cpp.o
 .PHONY : src/RayTrace/Utils/Utils.cpp.o
 
 src/RayTrace/Utils/Utils.i: src/RayTrace/Utils/Utils.cpp.i
@@ -232,6 +246,7 @@ src/RayTrace/Utils/Utils.i: src/RayTrace/Utils/Utils.cpp.i
 # target to preprocess a source file
 src/RayTrace/Utils/Utils.cpp.i:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/RayTrace/Utils/Utils.cpp.i
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/RayTrace/Utils/Utils.cpp.i
 .PHONY : src/RayTrace/Utils/Utils.cpp.i
 
 src/RayTrace/Utils/Utils.s: src/RayTrace/Utils/Utils.cpp.s
@@ -241,7 +256,35 @@ src/RayTrace/Utils/Utils.s: src/RayTrace/Utils/Utils.cpp.s
 # target to generate assembly for a file
 src/RayTrace/Utils/Utils.cpp.s:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/RayTrace/Utils/Utils.cpp.s
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/RayTrace/Utils/Utils.cpp.s
 .PHONY : src/RayTrace/Utils/Utils.cpp.s
+
+src/RayTrace/Utils/directions.o: src/RayTrace/Utils/directions.cpp.o
+
+.PHONY : src/RayTrace/Utils/directions.o
+
+# target to build an object file
+src/RayTrace/Utils/directions.cpp.o:
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/RayTrace/Utils/directions.cpp.o
+.PHONY : src/RayTrace/Utils/directions.cpp.o
+
+src/RayTrace/Utils/directions.i: src/RayTrace/Utils/directions.cpp.i
+
+.PHONY : src/RayTrace/Utils/directions.i
+
+# target to preprocess a source file
+src/RayTrace/Utils/directions.cpp.i:
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/RayTrace/Utils/directions.cpp.i
+.PHONY : src/RayTrace/Utils/directions.cpp.i
+
+src/RayTrace/Utils/directions.s: src/RayTrace/Utils/directions.cpp.s
+
+.PHONY : src/RayTrace/Utils/directions.s
+
+# target to generate assembly for a file
+src/RayTrace/Utils/directions.cpp.s:
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/RayTrace/Utils/directions.cpp.s
+.PHONY : src/RayTrace/Utils/directions.cpp.s
 
 src/RobotGL/robotGL.o: src/RobotGL/robotGL.cpp.o
 
@@ -278,6 +321,7 @@ src/gKit/app.o: src/gKit/app.cpp.o
 src/gKit/app.cpp.o:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/app.cpp.o
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/app.cpp.o
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/app.cpp.o
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/app.cpp.o
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/app.cpp.o
 .PHONY : src/gKit/app.cpp.o
@@ -290,6 +334,7 @@ src/gKit/app.i: src/gKit/app.cpp.i
 src/gKit/app.cpp.i:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/app.cpp.i
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/app.cpp.i
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/app.cpp.i
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/app.cpp.i
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/app.cpp.i
 .PHONY : src/gKit/app.cpp.i
@@ -302,6 +347,7 @@ src/gKit/app.s: src/gKit/app.cpp.s
 src/gKit/app.cpp.s:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/app.cpp.s
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/app.cpp.s
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/app.cpp.s
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/app.cpp.s
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/app.cpp.s
 .PHONY : src/gKit/app.cpp.s
@@ -314,6 +360,7 @@ src/gKit/app_camera.o: src/gKit/app_camera.cpp.o
 src/gKit/app_camera.cpp.o:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/app_camera.cpp.o
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/app_camera.cpp.o
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/app_camera.cpp.o
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/app_camera.cpp.o
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/app_camera.cpp.o
 .PHONY : src/gKit/app_camera.cpp.o
@@ -326,6 +373,7 @@ src/gKit/app_camera.i: src/gKit/app_camera.cpp.i
 src/gKit/app_camera.cpp.i:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/app_camera.cpp.i
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/app_camera.cpp.i
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/app_camera.cpp.i
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/app_camera.cpp.i
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/app_camera.cpp.i
 .PHONY : src/gKit/app_camera.cpp.i
@@ -338,6 +386,7 @@ src/gKit/app_camera.s: src/gKit/app_camera.cpp.s
 src/gKit/app_camera.cpp.s:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/app_camera.cpp.s
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/app_camera.cpp.s
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/app_camera.cpp.s
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/app_camera.cpp.s
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/app_camera.cpp.s
 .PHONY : src/gKit/app_camera.cpp.s
@@ -350,6 +399,7 @@ src/gKit/app_time.o: src/gKit/app_time.cpp.o
 src/gKit/app_time.cpp.o:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/app_time.cpp.o
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/app_time.cpp.o
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/app_time.cpp.o
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/app_time.cpp.o
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/app_time.cpp.o
 .PHONY : src/gKit/app_time.cpp.o
@@ -362,6 +412,7 @@ src/gKit/app_time.i: src/gKit/app_time.cpp.i
 src/gKit/app_time.cpp.i:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/app_time.cpp.i
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/app_time.cpp.i
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/app_time.cpp.i
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/app_time.cpp.i
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/app_time.cpp.i
 .PHONY : src/gKit/app_time.cpp.i
@@ -374,6 +425,7 @@ src/gKit/app_time.s: src/gKit/app_time.cpp.s
 src/gKit/app_time.cpp.s:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/app_time.cpp.s
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/app_time.cpp.s
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/app_time.cpp.s
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/app_time.cpp.s
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/app_time.cpp.s
 .PHONY : src/gKit/app_time.cpp.s
@@ -386,6 +438,7 @@ src/gKit/color.o: src/gKit/color.cpp.o
 src/gKit/color.cpp.o:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/color.cpp.o
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/color.cpp.o
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/color.cpp.o
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/color.cpp.o
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/color.cpp.o
 .PHONY : src/gKit/color.cpp.o
@@ -398,6 +451,7 @@ src/gKit/color.i: src/gKit/color.cpp.i
 src/gKit/color.cpp.i:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/color.cpp.i
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/color.cpp.i
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/color.cpp.i
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/color.cpp.i
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/color.cpp.i
 .PHONY : src/gKit/color.cpp.i
@@ -410,6 +464,7 @@ src/gKit/color.s: src/gKit/color.cpp.s
 src/gKit/color.cpp.s:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/color.cpp.s
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/color.cpp.s
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/color.cpp.s
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/color.cpp.s
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/color.cpp.s
 .PHONY : src/gKit/color.cpp.s
@@ -422,6 +477,7 @@ src/gKit/draw.o: src/gKit/draw.cpp.o
 src/gKit/draw.cpp.o:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/draw.cpp.o
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/draw.cpp.o
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/draw.cpp.o
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/draw.cpp.o
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/draw.cpp.o
 .PHONY : src/gKit/draw.cpp.o
@@ -434,6 +490,7 @@ src/gKit/draw.i: src/gKit/draw.cpp.i
 src/gKit/draw.cpp.i:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/draw.cpp.i
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/draw.cpp.i
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/draw.cpp.i
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/draw.cpp.i
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/draw.cpp.i
 .PHONY : src/gKit/draw.cpp.i
@@ -446,6 +503,7 @@ src/gKit/draw.s: src/gKit/draw.cpp.s
 src/gKit/draw.cpp.s:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/draw.cpp.s
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/draw.cpp.s
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/draw.cpp.s
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/draw.cpp.s
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/draw.cpp.s
 .PHONY : src/gKit/draw.cpp.s
@@ -458,6 +516,7 @@ src/gKit/gamepads.o: src/gKit/gamepads.cpp.o
 src/gKit/gamepads.cpp.o:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/gamepads.cpp.o
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/gamepads.cpp.o
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/gamepads.cpp.o
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/gamepads.cpp.o
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/gamepads.cpp.o
 .PHONY : src/gKit/gamepads.cpp.o
@@ -470,6 +529,7 @@ src/gKit/gamepads.i: src/gKit/gamepads.cpp.i
 src/gKit/gamepads.cpp.i:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/gamepads.cpp.i
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/gamepads.cpp.i
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/gamepads.cpp.i
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/gamepads.cpp.i
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/gamepads.cpp.i
 .PHONY : src/gKit/gamepads.cpp.i
@@ -482,6 +542,7 @@ src/gKit/gamepads.s: src/gKit/gamepads.cpp.s
 src/gKit/gamepads.cpp.s:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/gamepads.cpp.s
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/gamepads.cpp.s
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/gamepads.cpp.s
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/gamepads.cpp.s
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/gamepads.cpp.s
 .PHONY : src/gKit/gamepads.cpp.s
@@ -494,6 +555,7 @@ src/gKit/image.o: src/gKit/image.cpp.o
 src/gKit/image.cpp.o:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/image.cpp.o
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/image.cpp.o
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/image.cpp.o
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/image.cpp.o
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/image.cpp.o
 .PHONY : src/gKit/image.cpp.o
@@ -506,6 +568,7 @@ src/gKit/image.i: src/gKit/image.cpp.i
 src/gKit/image.cpp.i:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/image.cpp.i
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/image.cpp.i
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/image.cpp.i
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/image.cpp.i
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/image.cpp.i
 .PHONY : src/gKit/image.cpp.i
@@ -518,6 +581,7 @@ src/gKit/image.s: src/gKit/image.cpp.s
 src/gKit/image.cpp.s:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/image.cpp.s
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/image.cpp.s
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/image.cpp.s
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/image.cpp.s
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/image.cpp.s
 .PHONY : src/gKit/image.cpp.s
@@ -530,6 +594,7 @@ src/gKit/image_hdr.o: src/gKit/image_hdr.cpp.o
 src/gKit/image_hdr.cpp.o:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/image_hdr.cpp.o
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/image_hdr.cpp.o
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/image_hdr.cpp.o
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/image_hdr.cpp.o
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/image_hdr.cpp.o
 .PHONY : src/gKit/image_hdr.cpp.o
@@ -542,6 +607,7 @@ src/gKit/image_hdr.i: src/gKit/image_hdr.cpp.i
 src/gKit/image_hdr.cpp.i:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/image_hdr.cpp.i
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/image_hdr.cpp.i
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/image_hdr.cpp.i
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/image_hdr.cpp.i
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/image_hdr.cpp.i
 .PHONY : src/gKit/image_hdr.cpp.i
@@ -554,6 +620,7 @@ src/gKit/image_hdr.s: src/gKit/image_hdr.cpp.s
 src/gKit/image_hdr.cpp.s:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/image_hdr.cpp.s
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/image_hdr.cpp.s
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/image_hdr.cpp.s
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/image_hdr.cpp.s
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/image_hdr.cpp.s
 .PHONY : src/gKit/image_hdr.cpp.s
@@ -566,6 +633,7 @@ src/gKit/image_io.o: src/gKit/image_io.cpp.o
 src/gKit/image_io.cpp.o:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/image_io.cpp.o
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/image_io.cpp.o
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/image_io.cpp.o
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/image_io.cpp.o
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/image_io.cpp.o
 .PHONY : src/gKit/image_io.cpp.o
@@ -578,6 +646,7 @@ src/gKit/image_io.i: src/gKit/image_io.cpp.i
 src/gKit/image_io.cpp.i:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/image_io.cpp.i
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/image_io.cpp.i
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/image_io.cpp.i
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/image_io.cpp.i
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/image_io.cpp.i
 .PHONY : src/gKit/image_io.cpp.i
@@ -590,6 +659,7 @@ src/gKit/image_io.s: src/gKit/image_io.cpp.s
 src/gKit/image_io.cpp.s:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/image_io.cpp.s
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/image_io.cpp.s
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/image_io.cpp.s
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/image_io.cpp.s
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/image_io.cpp.s
 .PHONY : src/gKit/image_io.cpp.s
@@ -602,6 +672,7 @@ src/gKit/mat.o: src/gKit/mat.cpp.o
 src/gKit/mat.cpp.o:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/mat.cpp.o
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/mat.cpp.o
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/mat.cpp.o
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/mat.cpp.o
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/mat.cpp.o
 .PHONY : src/gKit/mat.cpp.o
@@ -614,6 +685,7 @@ src/gKit/mat.i: src/gKit/mat.cpp.i
 src/gKit/mat.cpp.i:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/mat.cpp.i
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/mat.cpp.i
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/mat.cpp.i
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/mat.cpp.i
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/mat.cpp.i
 .PHONY : src/gKit/mat.cpp.i
@@ -626,6 +698,7 @@ src/gKit/mat.s: src/gKit/mat.cpp.s
 src/gKit/mat.cpp.s:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/mat.cpp.s
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/mat.cpp.s
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/mat.cpp.s
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/mat.cpp.s
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/mat.cpp.s
 .PHONY : src/gKit/mat.cpp.s
@@ -638,6 +711,7 @@ src/gKit/mesh.o: src/gKit/mesh.cpp.o
 src/gKit/mesh.cpp.o:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/mesh.cpp.o
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/mesh.cpp.o
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/mesh.cpp.o
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/mesh.cpp.o
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/mesh.cpp.o
 .PHONY : src/gKit/mesh.cpp.o
@@ -650,6 +724,7 @@ src/gKit/mesh.i: src/gKit/mesh.cpp.i
 src/gKit/mesh.cpp.i:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/mesh.cpp.i
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/mesh.cpp.i
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/mesh.cpp.i
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/mesh.cpp.i
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/mesh.cpp.i
 .PHONY : src/gKit/mesh.cpp.i
@@ -662,6 +737,7 @@ src/gKit/mesh.s: src/gKit/mesh.cpp.s
 src/gKit/mesh.cpp.s:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/mesh.cpp.s
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/mesh.cpp.s
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/mesh.cpp.s
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/mesh.cpp.s
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/mesh.cpp.s
 .PHONY : src/gKit/mesh.cpp.s
@@ -674,6 +750,7 @@ src/gKit/orbiter.o: src/gKit/orbiter.cpp.o
 src/gKit/orbiter.cpp.o:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/orbiter.cpp.o
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/orbiter.cpp.o
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/orbiter.cpp.o
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/orbiter.cpp.o
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/orbiter.cpp.o
 .PHONY : src/gKit/orbiter.cpp.o
@@ -686,6 +763,7 @@ src/gKit/orbiter.i: src/gKit/orbiter.cpp.i
 src/gKit/orbiter.cpp.i:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/orbiter.cpp.i
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/orbiter.cpp.i
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/orbiter.cpp.i
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/orbiter.cpp.i
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/orbiter.cpp.i
 .PHONY : src/gKit/orbiter.cpp.i
@@ -698,6 +776,7 @@ src/gKit/orbiter.s: src/gKit/orbiter.cpp.s
 src/gKit/orbiter.cpp.s:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/orbiter.cpp.s
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/orbiter.cpp.s
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/orbiter.cpp.s
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/orbiter.cpp.s
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/orbiter.cpp.s
 .PHONY : src/gKit/orbiter.cpp.s
@@ -710,6 +789,7 @@ src/gKit/program.o: src/gKit/program.cpp.o
 src/gKit/program.cpp.o:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/program.cpp.o
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/program.cpp.o
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/program.cpp.o
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/program.cpp.o
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/program.cpp.o
 .PHONY : src/gKit/program.cpp.o
@@ -722,6 +802,7 @@ src/gKit/program.i: src/gKit/program.cpp.i
 src/gKit/program.cpp.i:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/program.cpp.i
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/program.cpp.i
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/program.cpp.i
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/program.cpp.i
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/program.cpp.i
 .PHONY : src/gKit/program.cpp.i
@@ -734,6 +815,7 @@ src/gKit/program.s: src/gKit/program.cpp.s
 src/gKit/program.cpp.s:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/program.cpp.s
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/program.cpp.s
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/program.cpp.s
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/program.cpp.s
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/program.cpp.s
 .PHONY : src/gKit/program.cpp.s
@@ -746,6 +828,7 @@ src/gKit/rgbe.o: src/gKit/rgbe.cpp.o
 src/gKit/rgbe.cpp.o:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/rgbe.cpp.o
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/rgbe.cpp.o
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/rgbe.cpp.o
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/rgbe.cpp.o
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/rgbe.cpp.o
 .PHONY : src/gKit/rgbe.cpp.o
@@ -758,6 +841,7 @@ src/gKit/rgbe.i: src/gKit/rgbe.cpp.i
 src/gKit/rgbe.cpp.i:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/rgbe.cpp.i
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/rgbe.cpp.i
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/rgbe.cpp.i
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/rgbe.cpp.i
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/rgbe.cpp.i
 .PHONY : src/gKit/rgbe.cpp.i
@@ -770,6 +854,7 @@ src/gKit/rgbe.s: src/gKit/rgbe.cpp.s
 src/gKit/rgbe.cpp.s:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/rgbe.cpp.s
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/rgbe.cpp.s
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/rgbe.cpp.s
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/rgbe.cpp.s
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/rgbe.cpp.s
 .PHONY : src/gKit/rgbe.cpp.s
@@ -782,6 +867,7 @@ src/gKit/text.o: src/gKit/text.cpp.o
 src/gKit/text.cpp.o:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/text.cpp.o
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/text.cpp.o
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/text.cpp.o
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/text.cpp.o
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/text.cpp.o
 .PHONY : src/gKit/text.cpp.o
@@ -794,6 +880,7 @@ src/gKit/text.i: src/gKit/text.cpp.i
 src/gKit/text.cpp.i:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/text.cpp.i
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/text.cpp.i
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/text.cpp.i
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/text.cpp.i
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/text.cpp.i
 .PHONY : src/gKit/text.cpp.i
@@ -806,6 +893,7 @@ src/gKit/text.s: src/gKit/text.cpp.s
 src/gKit/text.cpp.s:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/text.cpp.s
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/text.cpp.s
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/text.cpp.s
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/text.cpp.s
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/text.cpp.s
 .PHONY : src/gKit/text.cpp.s
@@ -818,6 +906,7 @@ src/gKit/texture.o: src/gKit/texture.cpp.o
 src/gKit/texture.cpp.o:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/texture.cpp.o
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/texture.cpp.o
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/texture.cpp.o
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/texture.cpp.o
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/texture.cpp.o
 .PHONY : src/gKit/texture.cpp.o
@@ -830,6 +919,7 @@ src/gKit/texture.i: src/gKit/texture.cpp.i
 src/gKit/texture.cpp.i:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/texture.cpp.i
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/texture.cpp.i
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/texture.cpp.i
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/texture.cpp.i
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/texture.cpp.i
 .PHONY : src/gKit/texture.cpp.i
@@ -842,6 +932,7 @@ src/gKit/texture.s: src/gKit/texture.cpp.s
 src/gKit/texture.cpp.s:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/texture.cpp.s
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/texture.cpp.s
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/texture.cpp.s
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/texture.cpp.s
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/texture.cpp.s
 .PHONY : src/gKit/texture.cpp.s
@@ -854,6 +945,7 @@ src/gKit/uniforms.o: src/gKit/uniforms.cpp.o
 src/gKit/uniforms.cpp.o:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/uniforms.cpp.o
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/uniforms.cpp.o
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/uniforms.cpp.o
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/uniforms.cpp.o
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/uniforms.cpp.o
 .PHONY : src/gKit/uniforms.cpp.o
@@ -866,6 +958,7 @@ src/gKit/uniforms.i: src/gKit/uniforms.cpp.i
 src/gKit/uniforms.cpp.i:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/uniforms.cpp.i
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/uniforms.cpp.i
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/uniforms.cpp.i
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/uniforms.cpp.i
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/uniforms.cpp.i
 .PHONY : src/gKit/uniforms.cpp.i
@@ -878,6 +971,7 @@ src/gKit/uniforms.s: src/gKit/uniforms.cpp.s
 src/gKit/uniforms.cpp.s:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/uniforms.cpp.s
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/uniforms.cpp.s
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/uniforms.cpp.s
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/uniforms.cpp.s
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/uniforms.cpp.s
 .PHONY : src/gKit/uniforms.cpp.s
@@ -890,6 +984,7 @@ src/gKit/vec.o: src/gKit/vec.cpp.o
 src/gKit/vec.cpp.o:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/vec.cpp.o
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/vec.cpp.o
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/vec.cpp.o
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/vec.cpp.o
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/vec.cpp.o
 .PHONY : src/gKit/vec.cpp.o
@@ -902,6 +997,7 @@ src/gKit/vec.i: src/gKit/vec.cpp.i
 src/gKit/vec.cpp.i:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/vec.cpp.i
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/vec.cpp.i
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/vec.cpp.i
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/vec.cpp.i
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/vec.cpp.i
 .PHONY : src/gKit/vec.cpp.i
@@ -914,6 +1010,7 @@ src/gKit/vec.s: src/gKit/vec.cpp.s
 src/gKit/vec.cpp.s:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/vec.cpp.s
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/vec.cpp.s
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/vec.cpp.s
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/vec.cpp.s
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/vec.cpp.s
 .PHONY : src/gKit/vec.cpp.s
@@ -926,6 +1023,7 @@ src/gKit/wavefront.o: src/gKit/wavefront.cpp.o
 src/gKit/wavefront.cpp.o:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/wavefront.cpp.o
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/wavefront.cpp.o
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/wavefront.cpp.o
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/wavefront.cpp.o
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/wavefront.cpp.o
 .PHONY : src/gKit/wavefront.cpp.o
@@ -938,6 +1036,7 @@ src/gKit/wavefront.i: src/gKit/wavefront.cpp.i
 src/gKit/wavefront.cpp.i:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/wavefront.cpp.i
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/wavefront.cpp.i
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/wavefront.cpp.i
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/wavefront.cpp.i
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/wavefront.cpp.i
 .PHONY : src/gKit/wavefront.cpp.i
@@ -950,6 +1049,7 @@ src/gKit/wavefront.s: src/gKit/wavefront.cpp.s
 src/gKit/wavefront.cpp.s:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/wavefront.cpp.s
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/wavefront.cpp.s
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/wavefront.cpp.s
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/wavefront.cpp.s
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/wavefront.cpp.s
 .PHONY : src/gKit/wavefront.cpp.s
@@ -962,6 +1062,7 @@ src/gKit/widgets.o: src/gKit/widgets.cpp.o
 src/gKit/widgets.cpp.o:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/widgets.cpp.o
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/widgets.cpp.o
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/widgets.cpp.o
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/widgets.cpp.o
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/widgets.cpp.o
 .PHONY : src/gKit/widgets.cpp.o
@@ -974,6 +1075,7 @@ src/gKit/widgets.i: src/gKit/widgets.cpp.i
 src/gKit/widgets.cpp.i:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/widgets.cpp.i
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/widgets.cpp.i
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/widgets.cpp.i
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/widgets.cpp.i
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/widgets.cpp.i
 .PHONY : src/gKit/widgets.cpp.i
@@ -986,6 +1088,7 @@ src/gKit/widgets.s: src/gKit/widgets.cpp.s
 src/gKit/widgets.cpp.s:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/widgets.cpp.s
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/widgets.cpp.s
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/widgets.cpp.s
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/widgets.cpp.s
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/widgets.cpp.s
 .PHONY : src/gKit/widgets.cpp.s
@@ -998,6 +1101,7 @@ src/gKit/window.o: src/gKit/window.cpp.o
 src/gKit/window.cpp.o:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/window.cpp.o
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/window.cpp.o
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/window.cpp.o
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/window.cpp.o
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/window.cpp.o
 .PHONY : src/gKit/window.cpp.o
@@ -1010,6 +1114,7 @@ src/gKit/window.i: src/gKit/window.cpp.i
 src/gKit/window.cpp.i:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/window.cpp.i
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/window.cpp.i
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/window.cpp.i
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/window.cpp.i
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/window.cpp.i
 .PHONY : src/gKit/window.cpp.i
@@ -1022,6 +1127,7 @@ src/gKit/window.s: src/gKit/window.cpp.s
 src/gKit/window.cpp.s:
 	$(MAKE) -f CMakeFiles/RayTraceCPU.exe.dir/build.make CMakeFiles/RayTraceCPU.exe.dir/src/gKit/window.cpp.s
 	$(MAKE) -f CMakeFiles/RobotGL.exe.dir/build.make CMakeFiles/RobotGL.exe.dir/src/gKit/window.cpp.s
+	$(MAKE) -f CMakeFiles/Direction.exe.dir/build.make CMakeFiles/Direction.exe.dir/src/gKit/window.cpp.s
 	$(MAKE) -f CMakeFiles/shader_kit.exe.dir/build.make CMakeFiles/shader_kit.exe.dir/src/gKit/window.cpp.s
 	$(MAKE) -f CMakeFiles/imageViewer.exe.dir/build.make CMakeFiles/imageViewer.exe.dir/src/gKit/window.cpp.s
 .PHONY : src/gKit/window.cpp.s
@@ -1090,6 +1196,7 @@ help:
 	@echo "... RayTraceCPU.exe"
 	@echo "... rebuild_cache"
 	@echo "... RobotGL.exe"
+	@echo "... Direction.exe"
 	@echo "... shader_kit.exe"
 	@echo "... imageViewer.exe"
 	@echo "... src/RayTrace/CPU/RayTraceImageProcessing.o"
@@ -1101,6 +1208,9 @@ help:
 	@echo "... src/RayTrace/Utils/Utils.o"
 	@echo "... src/RayTrace/Utils/Utils.i"
 	@echo "... src/RayTrace/Utils/Utils.s"
+	@echo "... src/RayTrace/Utils/directions.o"
+	@echo "... src/RayTrace/Utils/directions.i"
+	@echo "... src/RayTrace/Utils/directions.s"
 	@echo "... src/RobotGL/robotGL.o"
 	@echo "... src/RobotGL/robotGL.i"
 	@echo "... src/RobotGL/robotGL.s"

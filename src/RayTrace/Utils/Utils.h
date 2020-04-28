@@ -200,11 +200,12 @@ struct World {
 
 Point squareRootParametrization(Source source);
 Point square2TriangleParametrization(Source source);
+Point randomPointHemisphereUniform(float & pdf);
+Point randomPointHemisphereDistributed(float & pdf);
 
 double calcBrbf(double kFactor, double mFactor, double cosTeta);
 
-// TODO améliorer pour triangle quelconque !!
-float aireTRect(TriangleData triangle);
+float aireTriangle(vec3 a, vec3 b, vec3 c);
 
 #endif //GKIT2LIGHTCMAKE_UTILS_H
 
