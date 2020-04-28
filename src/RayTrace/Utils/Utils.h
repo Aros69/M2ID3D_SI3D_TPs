@@ -6,6 +6,7 @@
 #include <cfloat>
 #include <cassert>
 #include <cmath>
+#include <random>
 
 #include "vec.h"
 #include "mesh.h"
@@ -197,7 +198,14 @@ struct World {
   Vector n;
 };
 
+Point squareRootParametrization(Source source);
+Point square2TriangleParametrization(Source source);
+Point randomPointHemisphereUniform(float & pdf);
+Point randomPointHemisphereDistributed(float & pdf);
+
 double calcBrbf(double kFactor, double mFactor, double cosTeta);
+
+float aireTriangle(vec3 a, vec3 b, vec3 c);
 
 #endif //GKIT2LIGHTCMAKE_UTILS_H
 

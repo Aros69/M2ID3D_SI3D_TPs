@@ -3,11 +3,8 @@ project(SI3D_TP)
 set(CMAKE_DIR "CMake")
 set(CMAKE_TUTO_DIR ${CMAKE_DIR}/tutos)
 
-
 include(${CMAKE_DIR}/cmakeConfiguration.cmake)
-
 include_directories(${PROJECT_SOURCE_DIR}/gKit)
-
 # Create the list of src files for gkit
 # Not reccomended practice by cmake developer because you must reload cmake when new files added
 file(GLOB_RECURSE GKIT_SRC_FILES
@@ -55,49 +52,12 @@ target_link_libraries(RayTraceCPU.exe
         ${GLEW_LIBRARIES}
         ${OPENGL_LIBRARIES})
 
-add_executable(RayTraceGPU.exe
+add_executable(Direction.exe
         ${GKIT_SRC_FILES}
-        src/RayTrace/GPU/mainGPU.cpp
-        src/RayTrace/Utils/Utils.cpp
+        src/RayTrace/Utils/directions.cpp
         src/RayTrace/Utils/Utils.h
-        src/RayTrace/Utils/OpenGLUtils.h)
-target_link_libraries(RayTraceGPU.exe
-        ${SDL2_LIBRARIES}
-        ${SDL2_IMG_LIBRARIES}
-        ${GLEW_LIBRARIES}
-        ${OPENGL_LIBRARIES})
-
-add_executable(TestOpenGL.exe
-        ${GKIT_SRC_FILES}
-        src/TestOpenGL.cpp)
-target_link_libraries(TestOpenGL.exe
-        ${SDL2_LIBRARIES}
-        ${SDL2_IMG_LIBRARIES}
-        ${GLEW_LIBRARIES}
-        ${OPENGL_LIBRARIES})
-
-add_executable(ComputeShaderTest.exe
-        ${GKIT_SRC_FILES}
-        src/RayTrace/GPU/ComputeShaderTest.cpp)
-target_link_libraries(ComputeShaderTest.exe
-        ${SDL2_LIBRARIES}
-        ${SDL2_IMG_LIBRARIES}
-        ${GLEW_LIBRARIES}
-        ${OPENGL_LIBRARIES})
-
-add_executable(heigthMapViewer.exe
-        ${GKIT_SRC_FILES}
-        src/heigthMapViewer.cpp)
-target_link_libraries(heigthMapViewer.exe
-        ${SDL2_LIBRARIES}
-        ${SDL2_IMG_LIBRARIES}
-        ${GLEW_LIBRARIES}
-        ${OPENGL_LIBRARIES})
-
-add_executable(RTgpuCompute.exe
-        ${GKIT_SRC_FILES}
-        src/RayTrace/GPU/RTgpuCompute.cpp)
-target_link_libraries(RTgpuCompute.exe
+        src/RayTrace/Utils/Utils.cpp)
+target_link_libraries(Direction.exe
         ${SDL2_LIBRARIES}
         ${SDL2_IMG_LIBRARIES}
         ${GLEW_LIBRARIES}
