@@ -60,8 +60,17 @@ Point randomPointHemisphereDistributed(float & pdf){
   return Point(x,y,z);
 }
 
-double calcBrbf(double kFactor, double mFactor, double cosTeta) {
-  return (kFactor / M_PI) + (1 - kFactor) * ((mFactor + 8) / (8 * M_PI)) * cosTeta;
+Vector normal(Source s, Point p){
+  Vector v1(p, s.a);
+  Vector v2(p, s.b);
+  return normalize(cross(v1, v2));
+}
+
+Vector normalOrientationIncomingRay(Vector normal, Ray incomingRay){
+  if (dot(normal, incomingRay.d) > 0) {
+    normal = -normal;
+  }
+  return normal;
 }
 
 float aireTriangle(vec3 a, vec3 b, vec3 c) {

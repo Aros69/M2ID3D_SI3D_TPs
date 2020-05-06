@@ -9,18 +9,19 @@ int main(const int argc, const char **argv) {
       rayTraceTechnique = "Ex5",
       noiseRemover = "",
       triangleParametrization = "square2Triangle",
-      directionParametrization = "",
+      directionParametrization = "distributed",
       pdf = "AreaSources";
   int nbRayDirect = 100, nbRayIndirect = 100;
   unsigned int imgWidth = 1024, imgHeight = 640;
   bool applyTonemapping = false, debug = false;
+  float epsilon = 0.001;
 
-  const int nbPrefixe = 15;
+  const int nbPrefixe = 16;
   std::string parameterPrefixe[nbPrefixe] =
       {"-mesh", "-orbiter", "-directLightSave", "-savePathAndFilename", "-nbDirectRay",
        "-nbIndirectRay", "-tonemapping", "-rayTraceTechnique", "-noiseRemover",
        "-trianglePointParametrization", "-directionParametrization", "-pdf",
-       "-imgWidth", "-imgHeight", "-debug"};
+       "-imgWidth", "-imgHeight", "-debug", "-epsilon"};
   for (int i = 2; i <= argc; ++i) {
     std::string programParameter = argv[i - 1];
     for (int j = 0; j < nbPrefixe; ++j) {
@@ -91,6 +92,10 @@ int main(const int argc, const char **argv) {
             debug = std::stoi(realParam);
             break;
           }
+          case 15: {
+            epsilon = std::stof(realParam);
+            break;
+          }
         }
       }
     }
@@ -114,6 +119,7 @@ int main(const int argc, const char **argv) {
             "  nbIndirectRay = " << nbRayIndirect << "\n" <<
             "  imgWidth = " << imgWidth << "\n" <<
             "  imgHeight = " << imgHeight << "\n" <<
+            "  epsilon = " << epsilon << "\n" <<
             "  applyTonemapping = " << applyTonemapping << "\n" <<
             "  debug = " << debug << std::endl;
 
@@ -122,8 +128,8 @@ int main(const int argc, const char **argv) {
   RayTraceImageProcessing p(mesh_filename, orbiter_filename, pathAndFilenameForSave,
                             directLightSaveFile, rayTraceTechnique, pdf,
                             triangleParametrization, directionParametrization,
-                            nbRayDirect, nbRayIndirect, applyTonemapping, debug, imgWidth,
-                            imgHeight);
+                            nbRayDirect, nbRayIndirect, epsilon, applyTonemapping,
+                            debug, imgWidth, imgHeight);
   p.rayTrace();
 
   return 0;

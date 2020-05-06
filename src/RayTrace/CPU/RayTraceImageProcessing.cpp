@@ -13,6 +13,7 @@ RayTraceImageProcessing::RayTraceImageProcessing(std::string meshPath,
                                                  std::string triangleParam,
                                                  std::string directionParam,
                                                  int directRay, int indirectRay,
+                                                 float epsilonUsed,
                                                  bool applyTonemapping,
                                                  bool debug, unsigned int resImageWidth,
                                                  unsigned int resImageHeight)
@@ -37,6 +38,7 @@ RayTraceImageProcessing::RayTraceImageProcessing(std::string meshPath,
     exit(0);
   nbDirectRay = directRay;
   nbIndirectRay = indirectRay;
+  epsilon = epsilonUsed;
   useTonemapping = applyTonemapping;
   showColorOverFlow = debug;
   if (!savePathFile.empty()) { pathAndFilename = savePathFile; }
@@ -206,104 +208,173 @@ Color RayTraceImageProcessing::exercice5DirectLightning(Hit hitInfo,
   // normale interpolee du triangle au point d'intersection
   Vector normalCameraMesh = normal(hitInfo, triangle);
   // retourne la normale pour faire face a la camera / origine du rayon...
-  if (dot(normalCameraMesh, usedRay.d) > 0) { normalCameraMesh = -normalCameraMesh; }
+  normalCameraMesh = normalOrientationIncomingRay(normalCameraMesh, usedRay);
 
-  // Pour toute les sources, crer un/des rayon(s) du point de l'intersection : pointCameraMesh à la sources
-  // Si l'intersection touche le point source alors on l'éclair sinon non
   if (nbDirectRay % sources->sources.size() != 0) {
     nbDirectRay += sources->sources.size() - nbDirectRay % sources->sources.size();
   }
   if (pdfTechnique == "AreaSources") {
-    float areaSources = 0;
-    for (auto s : sources->sources) {
-      areaSources += aireTriangle(s.a, s.b, s.c);
-    }
-    areaSources = 1.0f / areaSources;
-    float pdf = areaSources;
-    for (auto s : sources->sources) {
-      Point origin = pointCameraMesh;
-      for (int i = 0; i < nbDirectRay / sources->sources.size(); ++i) {
-        Point extremite(triangleParametrization(s));
-
-        float epsilon = 0.000001;
-
-        origin = origin + epsilon * normalCameraMesh;
-        extremite = extremite + epsilon * (extremite - origin);
-        Ray rayLight(origin, extremite);
-        if (Hit hitLight = bvh->intersect(rayLight)) {
-          const TriangleData &triangleLight = mesh.triangle(hitLight.triangle_id);
-          const Material &materialLight = mesh.triangle_material(hitLight.triangle_id);
-          if (materialLight.emission.power() > 0) {
-            float cosCameraMesh =
-                std::max(0.f, dot(normalCameraMesh, normalize(rayLight.d)));
-            Vector normalMeshLight = normal(hitLight, triangleLight);
-            if (dot(normalMeshLight, rayLight.d) > 0) {
-              normalMeshLight = -normalMeshLight;
-            }
-            float cosMeshLight =
-                std::max(0.f, dot(normalMeshLight, normalize(-rayLight.d)));
-            color = color +
-                    // Lumière emise par le point touche : Le(s)
-                    (materialLight.emission *
-                     // fr(sk,pointCameraMesh,o) couleur du materiaux ici cas mixte ???
-                     //calcBrbf(0.5, 0.5, cosMeshLight) * material.diffuse *
-                     // Old brbf
-                     1.f / float(M_PI) * material.diffuse *
-                     // (cosTeta*costTeta_sk)
-                     ((cosCameraMesh * cosMeshLight) /
-                      // dist^2(sk,pointCameraMesh)
-                      distance2(origin, extremite)) *
-                     // 1/pdf(sk)
-                     1.0f / pdf);
-          }
-        }
-      }
-    }
+    color = areaSourcesSampling(pointCameraMesh, normalCameraMesh, material);
   } else if (pdfTechnique == "CosAndDistance") {
-    World w = World(normalCameraMesh);
-    Point origin = pointCameraMesh;
-    float epsilon = 0.000001, pdf, miniPdf;
-    origin = origin + epsilon * normalCameraMesh;
-    for (int i = 0; i < nbDirectRay; ++i) {
-      Point extremite = directionParametrization(miniPdf);
-      Ray rayLight = Ray(origin, w(Vector(extremite)));
-      float cosCameraMesh = miniPdf * M_PI;
-      //std::max(0.f, dot(normalCameraMesh, normalize(rayLight.d)));
-      if (Hit hitLight = bvh->intersect(rayLight)) {
-        const TriangleData &triangleLight = mesh.triangle(hitLight.triangle_id);
-        const Material &materialLight = mesh.triangle_material(hitLight.triangle_id);
-        Vector normalMeshLight = normal(hitLight, triangleLight);
-        float cosMeshLight =
-            std::max(0.f, dot(normalMeshLight, normalize(-rayLight.d)));
-        if (materialLight.emission.power() > 0) {
-          Point e = point(hitLight, rayLight);
-          pdf = miniPdf * (cosMeshLight / distance2(origin, e));
-          color = color +
-                  // Lumière emise par le point touche : Le(s)
-                  (materialLight.emission *
-                   // fr(sk,pointCameraMesh,o) couleur du materiaux ici cas mixte ???
-                   //calcBrbf(0.5, 0.5, cosMeshLight) * material.diffuse *
-                   // Old brbf
-                   1.f / float(M_PI) * material.diffuse *
-                   // (cosTeta*costTeta_sk)
-                   ((cosCameraMesh * cosMeshLight) /
-                    // dist^2(sk,pointCameraMesh)
-                    distance2(origin, e)) *
-                   // 1/pdf(sk)
-                   1.0f / pdf);
-        }
-      }
-    }
-  } else {
-// Combined Method
+    color = cosAndDistanceSampling(pointCameraMesh, normalCameraMesh, material);
+  } else { // MIS Method
+    color = multiImportanceSampling(pointCameraMesh, normalCameraMesh, material);
   }
-
-
   color = color * (1.0f / float(nbDirectRay));
   color = color + material.emission;
 
   return
       color;
+}
+
+Color RayTraceImageProcessing::areaSourcesSampling(Point pointCameraMesh,
+                                                   Vector normalCameraMesh,
+                                                   const Material &material) {
+  Color color = Black();
+  float areaSources = 0;
+  for (auto s : sources->sources) {
+    areaSources += aireTriangle(s.a, s.b, s.c);
+  }
+  areaSources = 1.0f / areaSources;
+  float pdf = areaSources;
+  for (auto s : sources->sources) {
+    Point origin = pointCameraMesh;
+    for (int i = 0; i < nbDirectRay / sources->sources.size(); ++i) {
+      Point extremite(triangleParametrization(s));
+      Vector lightPointNormal = normal(s, extremite);
+      lightPointNormal = normalOrientationIncomingRay(lightPointNormal,
+                                                      Ray(extremite, origin));
+      origin = origin + epsilon * normalCameraMesh;
+      extremite = extremite + epsilon * lightPointNormal;
+      Ray rayLight(origin, extremite);
+      if (Hit hitLight = bvh->intersect(rayLight)) {
+        const TriangleData &triangleLight = mesh.triangle(hitLight.triangle_id);
+        const Material &materialLight = mesh.triangle_material(hitLight.triangle_id);
+        if (materialLight.emission.power() > 0) {
+          float cosCameraMesh =
+              std::max(0.f, dot(normalCameraMesh, normalize(rayLight.d)));
+          Vector normalMeshLight = normal(hitLight, triangleLight);
+          normalMeshLight = normalOrientationIncomingRay(normalMeshLight, rayLight);
+          float cosMeshLight =
+              std::max(0.f, dot(normalMeshLight, normalize(-rayLight.d)));
+          color = color +
+                  (materialLight.emission *
+                   1.f / float(M_PI) * material.diffuse *
+                   ((cosCameraMesh * cosMeshLight) / distance2(origin, extremite)) *
+                   1.0f / pdf);
+        }
+      }
+    }
+  }
+  return color;
+}
+
+Color RayTraceImageProcessing::cosAndDistanceSampling(Point pointCameraMesh,
+                                                      Vector normalCameraMesh,
+                                                      const Material &material) {
+  Color color = Black();
+  World w = World(normalCameraMesh);
+  Point origin = pointCameraMesh;
+  float pdf, miniPdf;
+  origin = origin + epsilon * normalCameraMesh;
+  for (int i = 0; i < nbDirectRay; ++i) {
+    Point extremite = directionParametrization(miniPdf);
+    Ray rayLight = Ray(origin, w(Vector(extremite)));
+    float cosCameraMesh = miniPdf * M_PI;
+    if (Hit hitLight = bvh->intersect(rayLight)) {
+      const TriangleData &triangleLight = mesh.triangle(hitLight.triangle_id);
+      const Material &materialLight = mesh.triangle_material(hitLight.triangle_id);
+      Vector normalMeshLight = normal(hitLight, triangleLight);
+      normalMeshLight = normalOrientationIncomingRay(normalMeshLight, rayLight);
+      float cosMeshLight =
+          std::max(0.f, dot(normalMeshLight, normalize(-rayLight.d)));
+      if (materialLight.emission.power() > 0) {
+        Point e = point(hitLight, rayLight);
+        pdf = (miniPdf / M_PI) * (cosMeshLight / distance2(origin, e));
+        color = color +
+                (materialLight.emission *
+                 1.f / float(M_PI) * material.diffuse *
+                 ((cosCameraMesh * cosMeshLight) / distance2(origin, e)) *
+                 1.0f / pdf);
+      }
+    }
+  }
+  return color;
+}
+
+Color RayTraceImageProcessing::multiImportanceSampling(Point pointCameraMesh,
+                                                       Vector normalCameraMesh,
+                                                       const Material &material) {
+  Color color = Black();
+//Generating ray with area of sources as pdf
+  float areaSources = 0;
+  for (auto s : sources->sources) {
+    areaSources += aireTriangle(s.a, s.b, s.c);
+  }
+  areaSources = 1.0f / areaSources;
+  float pdfAreaSources = areaSources;
+  for (auto s : sources->sources) {
+    Point origin = pointCameraMesh;
+    for (int i = 0; i < nbDirectRay / sources->sources.size(); ++i) {
+      Point extremite(triangleParametrization(s));
+      Vector lightPointNormal = normal(s, extremite);
+      lightPointNormal = normalOrientationIncomingRay(lightPointNormal,
+                                                      Ray(extremite, origin));
+      origin = origin + epsilon * normalCameraMesh;
+      extremite = extremite + epsilon * lightPointNormal;
+      Ray rayLight(origin, extremite);
+      if (Hit hitLight = bvh->intersect(rayLight)) {
+        const TriangleData &triangleLight = mesh.triangle(hitLight.triangle_id);
+        const Material &materialLight = mesh.triangle_material(hitLight.triangle_id);
+        if (materialLight.emission.power() > 0) {
+          float cosCameraMesh =
+              std::max(0.f, dot(normalCameraMesh, normalize(rayLight.d)));
+          Vector normalMeshLight = normal(hitLight, triangleLight);
+          normalMeshLight = normalOrientationIncomingRay(normalMeshLight, rayLight);
+          float cosMeshLight =
+              std::max(0.f, dot(normalMeshLight, normalize(-rayLight.d)));
+          float pdfCosAndDistance =
+              (cosCameraMesh / M_PI) * (cosMeshLight / distance2(origin, extremite));
+          color = color +
+                  (materialLight.emission *
+                   1.f / float(M_PI) * material.diffuse *
+                   ((cosCameraMesh * cosMeshLight) / distance2(origin, extremite)) *
+                   1.0f / pdfAreaSources) *
+                  // Ponderations de l'estimateur
+                  (pdfAreaSources / (pdfAreaSources + pdfCosAndDistance));
+        }
+      }
+    }
+  }
+  // Generating ray using cosAndDistance as pdf
+  World w = World(normalCameraMesh);
+  Point origin = pointCameraMesh;
+  float pdf, miniPdf;
+  origin = origin + epsilon * normalCameraMesh;
+  for (int i = 0; i < nbDirectRay; ++i) {
+    Point extremite = directionParametrization(miniPdf);
+    Ray rayLight = Ray(origin, w(Vector(extremite)));
+    float cosCameraMesh = miniPdf * M_PI;
+    if (Hit hitLight = bvh->intersect(rayLight)) {
+      const TriangleData &triangleLight = mesh.triangle(hitLight.triangle_id);
+      const Material &materialLight = mesh.triangle_material(hitLight.triangle_id);
+      Vector normalMeshLight = normal(hitLight, triangleLight);
+      normalMeshLight = normalOrientationIncomingRay(normalMeshLight, rayLight);
+      float cosMeshLight =
+          std::max(0.f, dot(normalMeshLight, normalize(-rayLight.d)));
+      if (materialLight.emission.power() > 0) {
+        Point e = point(hitLight, rayLight);
+        pdf = (miniPdf / M_PI) * (cosMeshLight / distance2(origin, e));
+        color = color +
+                ((materialLight.emission *
+                  1.f / float(M_PI) * material.diffuse *
+                  ((cosCameraMesh * cosMeshLight) / distance2(origin, e)) *
+                  1.0f / pdf)) *
+                (pdf / (pdfAreaSources + pdf));
+      }
+    }
+  }
+  return color;
 }
 
 Color RayTraceImageProcessing::occlusionAmbiante(Hit hitInfo, Ray usedRay) {
@@ -313,7 +384,7 @@ Color RayTraceImageProcessing::occlusionAmbiante(Hit hitInfo, Ray usedRay) {
   else {
     Point origin = point(hitInfo, usedRay);
     Vector normalCameraMesh = normal(hitInfo, triangle);
-    float epsilon = 0.000001;
+    normalCameraMesh = normalOrientationIncomingRay(normalCameraMesh, usedRay);
     origin = origin + normalCameraMesh * epsilon;
     World w = World(normalCameraMesh);
     Color color = material.diffuse;
@@ -349,9 +420,9 @@ Color RayTraceImageProcessing::exercice7Rebond(Hit hitInfo, Ray usedRay,
   // normale interpolee du triangle au point d'intersection
   Vector normalCameraMesh = normal(hitInfo, triangle);
   // retourne la normale pour faire face a la camera / origine du rayon...
-  if (dot(normalCameraMesh, usedRay.d) > 0) { normalCameraMesh = -normalCameraMesh; }
+  normalCameraMesh = normalOrientationIncomingRay(normalCameraMesh, usedRay);
 
-  float epsilon = 0.000001, pdf;
+  float pdf;
   pointCameraMesh = pointCameraMesh + normalCameraMesh * epsilon;
   World w = World(normalCameraMesh);
   for (int i = 0; i < nbIndirectRay; ++i) {

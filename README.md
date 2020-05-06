@@ -2,7 +2,8 @@
 ##### Auteur : Donnay Robin <donnay.robin@gmail.com>
 *Ce readme a été rédigé en utilisant la visionneuse Markdown de Visual Studio Code, pour un résultat se rapprochant de la vision de l'auteur, nous vous conseillons de l'utiliser (Ctrl+Maj+V sur le ReadMe, ouvert, avec Visual Studio Code). De plus, la visionneuse Markdown github ne prends pas en compte les tableaux réalisés ici.*
 
-![MainImage](doc/Ex7_1000Ray_CombinedEx5Tonemapped.png)
+|   ![MainImage](doc/readme/niceFirstPicture.png)  |  ![SecondImage](doc/readme/niceSecondPicture.png)   |
+| ------------- |   ---   | 
 
 # Introduction
 
@@ -36,13 +37,14 @@ De nombreux éléments peuvent être modifié grâce à la parametrisation de l'
 - `-directLightSaveFile` : Le fichier contenant la sauvegarde de l'éclairage direct pour seulement calculer l'eclairage indirect. Une sauvegarde est automatiquement faites avec l'extension ".taf" et utilise le paramètre `-SavePathAndFilename` comme nom de fichier)
 - `-nbDirectRay` : Le nombre de rayon minimum pour calculer l'eclairage direct (si le nombre n'est pas suffisant pour être équitable entre toutes les sources, il est augmenté pour être équitable)
 - `-nbIndirectRay` : Le nombre de rayon minimum pour calculer l'eclairage indirect 
+- `-epsilon` : La décalage pris par rapport à la géometrie éviter de erreur d'intersection
 - `-tonemapping` : Utilisation ou non de la compression Gamma 2.2 (le paramètre doit-être à 1 pour l'utiliser, 0 sinon)
 - `-rayTraceTechnique` : La "technique" de raytracing à utiliser, basé sur les exercices du [TP](https://perso.univ-lyon1.fr/jean-claude.iehl/Public/educ/M2PROIMA/2019/tp2.html). Valeurs possibles : 
     - "Ex2"
     - "Ex5"
     - "Ex7" (utilisant l'eclairage direct "Ex5" par défault, sauf si une saubegarde d'éclairage direct lui est fournis)
     - "Ambiant"
-- `-pdf` : La pdf utilisé pour la technique de ray tracing "Ex5", les valeurs possible étant : "AreaSources" et "CosAndDistance"
+- `-pdf` : La pdf utilisé pour la technique de ray tracing "Ex5", les valeurs possible étant : "AreaSources", "CosAndDistance" and "MIS"
 - `-trianglePointParametrization` : Définis quelle parametrisation doit être faites pour choisir un point aléatoirement sur un triangle : "square2triangle" ou "squareRoot"
 - `-directionParametrization` : Définis quelle parametrisation doit être faites pour choisir un point aléatoirement sur un triangle : "uniform" ou "distributed"
 - `-debug` : Mets les pixels dont la luminosité calculé dépasse les valeurs normal (r, g ou b > 1) en jaune. (le paramètre doit-être à 1 pour l'utilisé, 0 sinon)
@@ -60,6 +62,7 @@ Les valeurs par défault sont :
 - `-nbIndirectRay=100`
 - `-imgWidth=1024`
 - `-imgHeight=640`
+- `-epsilon=0.001`
 - `-tonemapping=0`
 - `-pdf=AreaSources`
 - `-directLightSaveFile=`
@@ -98,7 +101,10 @@ PS : La lumière de toute les scènes est la même afin de ne pas trop fausser l
 | Commande de base     |   `./bin/RayTraceCPU.exe -mesh=data/RayTracingData/cornell.obj -orbiter=data/RayTracingData/cornellOrbiter.txt -savePathAndFilename=doc/readme/Ex5_Cornell -rayTraceTechnique=Ex5`   |   `./bin/RayTraceCPU.exe -mesh=data/RayTracingData/geometry.obj -orbiter=data/RayTracingData/geometryOrbiter.txt -savePathAndFilename=doc/readme/Ex5_Geometry -rayTraceTechnique=Ex5`   |   `./bin/RayTraceCPU.exe -mesh=data/RayTracingData/emission.obj -orbiter=data/RayTracingData/emissionOrbiter.txt -savePathAndFilename=doc/readme/Ex5_Emission -rayTraceTechnique=Ex5`   |   `./bin/RayTraceCPU.exe -mesh=data/RayTracingData/shadow.obj -orbiter=data/RayTracingData/shadowOrbiter.txt -savePathAndFilename=doc/readme/Ex5_Shadow -rayTraceTechnique=Ex5`   |   `./bin/RayTraceCPU.exe -mesh=data/RayTracingData/secondary.obj -orbiter=data/RayTracingData/secondaryOrbiter.txt -savePathAndFilename=doc/readme/Ex5_Secondary -rayTraceTechnique=Ex5`   |
 | Résultat (sans option suplémentaire)     |   ![Ex5_Cornell](doc/readme/Ex5_Cornell.png)   |   ![Ex5_Geometry](doc/readme/Ex5_Geometry.png)   |   ![Ex5_Emission](doc/readme/Ex5_Emission.png)   |   ![Ex5_Shadow](doc/readme/Ex5_Shadow.png)   |   ![Ex5_Secondary](doc/readme/Ex5_Secondary.png)   |  
 | Résultat (`-nbDirectRay=1`)     |   ![Ex5_Cornell_1Ray](doc/readme/Ex5_Cornell_1Ray.png)   |   ![Ex5_Geometry_1Ray](doc/readme/Ex5_Geometry_1Ray.png)   |   ![Ex5_Emission_1Ray](doc/readme/Ex5_Emission_1Ray.png)   |   ![Ex5_Shadow_1Ray](doc/readme/Ex5_Shadow_1Ray.png)   |   ![Ex5_Secondary_1Ray](doc/readme/Ex5_Secondary_1Ray.png)   | 
-| Résultat (`-pdf=CosAndDistance`)     |   ![Ex5_Cornell_cosPdf](doc/readme/Ex5_Cornell_cosPdf.png)   |   ![Ex5_Geometry_cosPdf](doc/readme/Ex5_Geometry_cosPdf.png)   |   ![Ex5_Emission_cosPdf](doc/readme/Ex5_Emission_cosPdf.png)   |   ![Ex5_Shadow_cosPdf](doc/readme/Ex5_Shadow_cosPdf.png)   |   ![Ex5_Secondary](doc/readme/Ex5_Secondary_cosPdf.png)   |
+| Résultat (`-nbDirectRay=1 -trianglePointParametrization=squareRoot`)     |   ![Ex5_Cornell_1Ray_squareRoot](doc/readme/Ex5_Cornell_1Ray_squareRoot.png)   |   ![Ex5_Geometry_1Ray_squareRoot](doc/readme/Ex5_Geometry_1Ray_squareRoot.png)   |   ![Ex5_Emission_1Ray_squareRoot](doc/readme/Ex5_Emission_1Ray_squareRoot.png)   |   ![Ex5_Shadow_1Ray_squareRoot](doc/readme/Ex5_Shadow_1Ray_squareRoot.png)   |   ![Ex5_Secondary_1Ray_squareRoot](doc/readme/Ex5_Secondary_1Ray_squareRoot.png)   | 
+| Résultat (`-pdf=CosAndDistance`)     |   ![Ex5_Cornell_cosPdf](doc/readme/Ex5_Cornell_cosPdf.png)   |   ![Ex5_Geometry_cosPdf](doc/readme/Ex5_Geometry_cosPdf.png)   |   ![Ex5_Emission_cosPdf](doc/readme/Ex5_Emission_cosPdf.png)   |   ![Ex5_Shadow_cosPdf](doc/readme/Ex5_Shadow_cosPdf.png)   |   ![Ex5_Secondary_cosPdf](doc/readme/Ex5_Secondary_cosPdf.png)   |
+| Résultat (`-pdf=MIS`)     |   ![Ex5_Cornell_mis](doc/readme/Ex5_Cornell_mis.png)   |   ![Ex5_Geometry_mis](doc/readme/Ex5_Geometry_mis.png)   |   ![Ex5_Emission_mis](doc/readme/Ex5_Emission_mis.png)   |   ![Ex5_Shadow_mis](doc/readme/Ex5_Shadow_mis.png)   |   ![Ex5_Secondary_mis](doc/readme/Ex5_Secondary_mis.png)   |
+| Résultat (`-epsilon=0.00001`)     |   ![Ex5_Cornell_Epsilon00001](doc/readme/Ex5_Cornell_Epsilon00001.png)   |   ![Ex5_Geometry_Epsilon00001](doc/readme/Ex5_Geometry_Epsilon00001.png)   |   ![Ex5_Emission_Epsilon00001](doc/readme/Ex5_Emission_Epsilon00001.png)   |   ![Ex5_Shadow_Epsilon00001](doc/readme/Ex5_Shadow_Epsilon00001.png)   |   ![Ex5_Secondary_Epsilon00001](doc/readme/Ex5_Secondary_Epsilon00001.png)   |  
 | Résultat (`-tonemapping=1`)     |   ![Ex5_Cornell_tonemapped](doc/readme/Ex5_Cornell_tonemapped.png)   |   ![Ex5_Geometry_tonemapped](doc/readme/Ex5_Geometry_tonemapped.png)   |   ![Ex5_Emission_tonemapped](doc/readme/Ex5_Emission_tonemapped.png)   |   ![Ex5_Shadow_tonemapped](doc/readme/Ex5_Shadow_tonemapped.png)   |   ![Ex5__tonemapped](doc/readme/Ex5_Secondary_tonemapped.png)   |
 
 

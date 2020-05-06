@@ -203,7 +203,9 @@ Point square2TriangleParametrization(Source source);
 Point randomPointHemisphereUniform(float & pdf);
 Point randomPointHemisphereDistributed(float & pdf);
 
-double calcBrbf(double kFactor, double mFactor, double cosTeta);
+Vector normal(Source s, Point p);
+
+Vector normalOrientationIncomingRay(Vector normal, Ray incomingRay);
 
 float aireTriangle(vec3 a, vec3 b, vec3 c);
 
